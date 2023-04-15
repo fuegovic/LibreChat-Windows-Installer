@@ -37,7 +37,7 @@ function Install-NodeJS {
     Write-Host "Node.js is not installed." -ForegroundColor Red
     # Download and install Node.js using winget
     Write-Host "Downloading and installing Node.js using winget..."
-    winget install OpenJS.NodeJS
+    winget install OpenJS.NodeJS --accept-package-agreements  --accept-source-agreements
     Write-Host "Node.js installed successfully." -ForegroundColor Green
 	return $True # Set ExitRequired to true
   }
