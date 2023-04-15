@@ -91,6 +91,8 @@ $shortcut.Save()
 
 Write-Host "Your shortcut is located here : $shortcutLocation."
 
+return $shortcutLocation
+
 # Pause and clear the screen
 Write-Host "`nPress any key to continue..." -ForegroundColor Magenta
 $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
