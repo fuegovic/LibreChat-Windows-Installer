@@ -37,7 +37,7 @@ function Install-GitSoftware {
     Write-Host "Git is not installed." -ForegroundColor Red
     # Download and install Git using winget
     Write-Host "Downloading and installing Git using winget..."
-    winget install Git.Git
+    winget install Git.Git --accept-package-agreements  --accept-source-agreements
     return $True # Set ExitRequired to true
 	Write-Host "Git installed successfully." -ForegroundColor Green
 	
