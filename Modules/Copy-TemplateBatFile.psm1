@@ -113,10 +113,10 @@ Invoke-Command -ScriptBlock {New-EnvironmentFile $template $envfile $openai_key 
 
 # Soft Requirements (MeiliSearch and ngrok)
 # Downloading Meilisearch
-#Install-MeiliSearch -final_dir $final_dir -envfile $envfile
+Install-MeiliSearch -final_dir $final_dir -envfile $envfile
 
 # Run Install-Ngrok
-#Install-Ngrok $final_dir 
+Install-Ngrok $final_dir 
 
 # Instruction for MongoDB, OpenAI, Bing and ngrok
 # If the mongo_uri parameter is missing or invalid, run Get-MongoURI
@@ -138,9 +138,8 @@ if (-not $bingai_token) {
 Import-Module .\Modules\Get-IniContent.psm1
 
 # Build Project, Create .bat File, Conclusion
-
 # Run Invoke-NpmCommands
-#Invoke-NpmCommands $final_dir
+Invoke-NpmCommands $final_dir
 
 # Run Copy-TemplateBatFile
 $InformationPreference = 'Continue'
