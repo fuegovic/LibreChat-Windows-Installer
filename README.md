@@ -21,7 +21,7 @@ This script requires Windows 10 64 bits, version 21H1 or higher.
 
 **TL;DR**
 
-* Download the zip file ⤴️ (click on code - select download zip)
+* Download the zip file (click on code - select download zip) ⤴️ 
 
 * Extract the zip file
 
