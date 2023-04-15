@@ -139,17 +139,17 @@ $choice = Install-Ngrok $final_dir
 
 # If the mongo_uri parameter is missing or invalid, run Get-MongoURI
 if (-not $mongo_uri) {
-  Get-MongoURI $envfile $final_dir #Working
+  Get-MongoURI $envfile $final_dir
 }
 
 # If the openai_key parameter is missing or invalid, run Get-MongoURI
 if (-not $openai_key) {
-  Get-OpenAIAPIKey $envfile $final_dir #Working
+  Get-OpenAIAPIKey $envfile $final_dir
 }
 
 # If the bingai_token parameter is missing or invalid, run Get-MongoURI
 if (-not $bingai_token) {
-  Get-BingAccessToken $envfile $final_dir #NEED TO CHANGE .ENV KEY NAME
+  Get-BingAccessToken $envfile $final_dir
  
 }
 
@@ -163,10 +163,10 @@ Import-Module .\Modules\Get-IniContent.psm1
 Invoke-NpmCommands $final_dir
 
 # Run Copy-TemplateBatFile
-Copy-TemplateBatFile $original_location $final_dir $envfile
+$shortcutLocation = Copy-TemplateBatFile -original_location $original_location -final_dir $final_dir
 
 # Run Show-InstallationConclusion
-Show-InstallationConclusion $final_dir
+Show-InstallationConclusion $final_dir $shortcutLocation
 
 #endregion
 
