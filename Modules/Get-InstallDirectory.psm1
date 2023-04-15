@@ -73,66 +73,67 @@ function Get-InstallDirectory {
             New-Item $default_dir -ItemType Directory -Force | Out-Null
             # Set the final directory as the default directory
             $final_dir = $default_dir
-        }
-    }
-    # If the user chooses not to use the default directory
-    else {
-        # Ask the user to enter a custom path for installation
-        $custom_path = Read-Host "Enter the path for the custom installation dir"
-        
-        # Loop until the user enters a valid path name or nothing
-        while ((Test-Path $custom_path) -eq $false) {
-            Write-Host "Invalid path. Please enter a valid path name (or leave blank to go back)" -ForegroundColor Yellow
-            $custom_path = Read-Host "Enter the path for the custom installation dir"
-        }
+			}
+		}
+		# If the user chooses not to use the default directory
+		else {
+			# Ask the user to enter a custom path for installation
+			$custom_path = Read-Host "Enter the path for the custom installation dir"
+			
+			# Loop until the user enters a valid path name or nothing
+			while ($true) {
+				try {
+					# Check if the custom path exists
+					if (-not (Test-Path $custom_path)) {
+						# Create the custom path
+						New-Item $custom_path -ItemType Directory -Force | Out-Null
+					}
+					break
+				} 
+				catch {
+					Write-Host "Invalid path. Please enter a valid path name (or leave blank to go back)" -ForegroundColor Yellow
+					$custom_path = Read-Host "Enter the path for the custom installation dir"
+				}
+			}
 
-        # If the user enters nothing, go back to the first question
-        if ($custom_path -eq "") {
-            Get-InstallDirectory
-            return
-        }
-        # If the user enters a valid path name
-        else {
-            # Check if the custom path is empty
-            if (Test-Path $custom_path) {
-                # Ask the user if they want to overwrite the content
-                $overwrite = Read-Host "$custom_path is not empty. Do you want to overwrite the content? (y/N)" #here?
-                # Set the default value to N
+			# If the user enters nothing, go back to the first question
+			if ($custom_path -eq "") {
+				Get-InstallDirectory
+				return
+			}
+			# If the user enters a valid path name
+			else {
+				# Ask the user if they want to overwrite the content
+				$overwrite = Read-Host "$custom_path is not empty. Do you want to overwrite the content? (y/N)" #here?
+				# Set the default value to N
 				if ($overwrite -eq "") {
 					$overwrite = "N"
 				}
 				# Loop until the user enters a valid input
-                while ($overwrite -notin @("Y","y","N","n","")) {
-                    Write-Host "Invalid input. Please enter y or N." -ForegroundColor Yellow
-                    $overwrite = Read-Host "$custom_path is not empty. Do you want to overwrite the content? (y/N)"
+				while ($overwrite -notin @("Y","y","N","n","")) {
+					Write-Host "Invalid input. Please enter y or N." -ForegroundColor Yellow
+					$overwrite = Read-Host "$custom_path is not empty. Do you want to overwrite the content? (y/N)"
 					# Set the default value to N
 					if ($overwrite -eq "") {
 						$overwrite = "N"
 					}
 				}
-                # If the user chooses to overwrite or nothing
-                if ($overwrite -in @("Y","y","")) {
-                    # Erase the content of the custom path
-                    Remove-Item $custom_path\* -Recurse -Force
-                    # Set the final directory as the custom path
-                    $final_dir = $custom_path
-                }
-                # If the user chooses not to overwrite
-                else {
-                    # Go back to the first question
-                    Get-InstallDirectory
-                    return
-                }
-            }
-            # If the custom path is empty
-            else {
-                # Create the custom path
-                New-Item $custom_path -ItemType Directory -Force | Out-Null
-                # Set the final directory as the custom path
-                $final_dir = $custom_path
-            }
-        }
-    }
+				# If the user chooses to overwrite or nothing
+				if ($overwrite -in @("Y","y","")) {
+					# Erase the content of the custom path
+					Remove-Item $custom_path\* -Recurse -Force
+					# Set the final directory as the custom path
+					$final_dir = $custom_path
+				}
+				# If the user chooses not to overwrite
+				else {
+					# Go back to the first question
+					Get-InstallDirectory
+					return
+				}
+			}
+		}
+
 
     Write-Host "The final install directory is : " -NoNewline 
     Write-Host "$final_dir" -ForegroundColor Green
