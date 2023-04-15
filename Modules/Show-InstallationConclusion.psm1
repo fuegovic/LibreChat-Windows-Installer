@@ -14,7 +14,7 @@ This example displays a congratulatory message and some instructions for using c
 This function requires chatgpt-clone to be installed on the system.
 
 #>
-function Show-InstallationConclusion ($final_dir) {
+function Show-InstallationConclusion ($final_dir, $shortcutLocation) {
 
   # Display the message using a here-string
   Write-Host "*** Conclusion ***" -ForegroundColor Blue
@@ -25,7 +25,7 @@ function Show-InstallationConclusion ($final_dir) {
   Write-Host "$final_dir\api\.env" -ForegroundColor Yellow
   Write-Host "`n"
   Write-Host "To start or update the project, double-click on" -ForegroundColor Red
-  Write-Host "the ChatGPT-Clone shortcut located on your desktop" -ForegroundColor Red
+  Write-Host "the ChatGPT-Clone shortcut located here : $shortcutLocation" -ForegroundColor Red
   Write-Host "This will launch everything needed to run or update ChatGPT-Clone." -ForegroundColor Red
   Write-Host "`n"
   Write-Host "If you want to learn more about ChatGPT-Clone, you can visit its GitHub repository at:"-ForegroundColor DarkYellow
