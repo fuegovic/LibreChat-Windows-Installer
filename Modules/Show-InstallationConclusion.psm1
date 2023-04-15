@@ -25,7 +25,7 @@ function Show-InstallationConclusion ($final_dir, $shortcutLocation) {
   Write-Host "$final_dir\api\.env" -ForegroundColor Yellow
   Write-Host "`n"
   Write-Host "To start or update the project, double-click on" -ForegroundColor Red
-  Write-Host "the ChatGPT-Clone shortcut located here : $shortcutLocation" -ForegroundColor Red
+  Write-Host "the ChatGPT-Clone shortcut located here : $shortcutLocation\ChatGPT-Clone.lnk" -ForegroundColor Red
   Write-Host "This will launch everything needed to run or update ChatGPT-Clone." -ForegroundColor Red
   Write-Host "`n"
   Write-Host "If you want to learn more about ChatGPT-Clone, you can visit its GitHub repository at:"-ForegroundColor DarkYellow
