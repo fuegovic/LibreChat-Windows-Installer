@@ -144,20 +144,20 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-<small>[Requirements](#requirements)
-[Installation](#installation)
-[Usage](#usage)
-[Disclaimers](#disclaimers)
-[License](#License)
-[Credits](#credits)</small>
+<small>[Requirements](#requirements)</small>
+<small>[Installation](#installation)</small>
+<small>[Usage](#usage)</small>
+<small>[Disclaimers](#disclaimers)</small>
+<small>[License](#License)</small>
+<small>[Credits](#credits)</small>
 
-<small>[ChatGPT-Clone](https://github.com/danny-avila/chatgpt-clone)
-[ChatGPT-Clone's discord server](https://discord.gg/NGaa9RPCft)
-[Fuegovic' Github](https://github.com/fuegovic)
-[Fuegovis's Bandcamp](https://fuegovic.bandcamp.com)
-[Fuegovic's Spotify](https://open.spotify.com/artist/3ZfaxdODbE1NrfQYsGO92R)
-[ChatGPT](https://chat.openai.com/)
-[Bing](https://www.bing.com)
-[MeiliSearch]([https://www.meilisearch.com](https://www.meilisearch.com)
-[MongoDB]([https://www.mongodb.com](https://www.mongodb.com)
-[Ngrok](https://ngrok.com)</small>
+<small>[ChatGPT-Clone](https://github.com/danny-avila/chatgpt-clone)</small>
+<small>[ChatGPT-Clone's discord server](https://discord.gg/NGaa9RPCft)</small>
+<small>[Fuegovic' Github](https://github.com/fuegovic)</small>
+<small>[Fuegovis's Bandcamp](https://fuegovic.bandcamp.com)</small>
+<small>[Fuegovic's Spotify](https://open.spotify.com/artist/3ZfaxdODbE1NrfQYsGO92R)</small>
+<small>[ChatGPT](https://chat.openai.com/)</small>
+<small>[Bing](https://www.bing.com)</small>
+<small>[MeiliSearch]([https://www.meilisearch.com](https://www.meilisearch.com)</small>
+<small>[MongoDB]([https://www.mongodb.com](https://www.mongodb.com)</small>
+<small>[Ngrok](https://ngrok.com)</small></small>
