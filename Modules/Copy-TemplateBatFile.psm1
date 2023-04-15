@@ -41,60 +41,43 @@ $batch_contents = $batch_contents -replace '\$MEILI_MASTER_KEY', $MEILI_MASTER_K
 Set-Content $copied_file $batch_contents
 
 Copy-Item "$original_location\Dependencies\ChatGPT-Clone.ico" "$final_dir\ChatGPT-Clone.ico"
-# Set the shortcut location and other parameters
-$shortcutTargetPath = "$final_dir\ChatGPT-Clone.bat"
-$shortcutIconLocation = "$final_dir\ChatGPT-Clone.ico"
-$shortcutWorkingDirectory = "$final_dir"
 
-# Define the two possible locations for the shortcut
-$shortcutLocation1 = "$HOME\Desktop\ChatGPT Clone.lnk"
-$shortcutLocation2 = "$HOME\OneDrive\Desktop\ChatGPT Clone.lnk"
-
-# Set a variable to store the selected location
-$selectedShortcutLocation = ""
-
-# Check if both locations exist
-if (Test-Path -Path $shortcutLocation1) -and (Test-Path -Path $shortcutLocation2) {
-    # Prompt the user to choose a location
-    $selectedShortcutLocation = Read-Host "Both desktop and OneDrive desktop exist. Type '1' to save on desktop or '2' to save on OneDrive desktop."
-    
-    if ($selectedShortcutLocation -eq "1") {
-        # Save the shortcut on the first location
-        $shortcutLocation = $shortcutLocation1
-    } elseif ($selectedShortcutLocation -eq "2") {
-        # Save the shortcut on the second location
-        $shortcutLocation = $shortcutLocation2
-    } else {
-        # The user did not select a valid option
-        Write-Host "Invalid option selected."
-        return
+# Check to see if the desktop is in OneDrive, in the user's home directory, or both
+$OneDrive = "$env:USERPROFILE\OneDrive\Desktop"
+$UserDesktop = "$env:HOMEPATH\Desktop"
+if ((Test-Path $OneDrive) -and (Test-Path $UserDesktop)) {
+    Write-Host "The desktop is located in both OneDrive and $env:HOMEPATH." -ForegroundColor Cyan
+    $Location = Read-Host "Which directory would you like to copy the shortcut to? (OneDrive, Home)"
+    If ($Location -eq "OneDrive"){
+        $shortcutLocation = "$OneDrive"
     }
-} elseif (Test-Path -Path $shortcutLocation1) {
-    # Save the shortcut on the first location
-    $shortcutLocation = $shortcutLocation1
-} elseif (Test-Path -Path $shortcutLocation2) {
-    # Save the shortcut on the second location
-    $shortcutLocation = $shortcutLocation2
-} else {
-    # None of the locations exist, set the shortcut location to $final_dir
-    $shortcutLocation = "$final_dir\ChatGPT Clone.lnk"
-    Write-Host "No desktop locations found. Saving shortcut to $shortcutLocation."
+    Else{
+        $shortcutLocation = "$UserDesktop"
+    }
+}
+elseif (Test-Path $OneDrive){
+    $shortcutLocation = "$OneDrive"
+}
+elseif(Test-Path $UserDesktop){
+    $shortcutLocation = "$UserDesktop"
+}
+else{
+    $shortcutLocation = "$final_dir"
 }
 
-# Create and save the shortcut
-$wshShell = New-Object -ComObject WScript.Shell
-$shortcut = $wshShell.CreateShortcut($shortcutLocation)
-$shortcut.TargetPath = $shortcutTargetPath
-$shortcut.IconLocation = $shortcutIconLocation
-$shortcut.WorkingDirectory = $shortcutWorkingDirectory
-$shortcut.Save()
+$WshShell = New-Object -comObject WScript.Shell
+$Shortcut = $WshShell.CreateShortcut("$shortcutLocation\ChatGPT-Clone.lnk")
+$Shortcut.TargetPath = "$final_dir\ChatGPT-Clone.bat"
+$Shortcut.IconLocation = "$final_dir\ChatGPT-Clone.ico"
+$Shortcut.WorkingDirectory = "$final_dir"
 
-Write-Host "Your shortcut is located here : $shortcutLocation."
-
-return $shortcutLocation
+$Shortcut.Save()
+Write-Host "The shortcut to ChatGPT-Clone is : $shortcutLocation\ChatGPT-Clone.lnk" -ForegroundColor Cyan
 
 # Pause and clear the screen
 Write-Host "`nPress any key to continue..." -ForegroundColor Magenta
 $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
 Clear-Host
+
+return $shortcutLocation
 }
