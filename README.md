@@ -90,7 +90,7 @@ Go to your desktop and use the shortcut `ChatGPT Clone` to start and/or update t
 
 - **4** Close everything for you
 
-<img title="" src="file:///C:/Users/fueg/Desktop/install/Images/Menu1.jpg" alt="Menu1.jpg" width="680" data-align="inline">
+<img title="" src="https://github.com/fuegovic/wip-inst-cgpt-c/blob/main/Images/Menu1.jpg" alt="Menu1.jpg" width="680" data-align="inline">
 
 **On the second screen**
 
@@ -100,7 +100,7 @@ Go to your desktop and use the shortcut `ChatGPT Clone` to start and/or update t
 
 - **2** Close everything for you
 
-<img title="" src="file:///C:/Users/fueg/Desktop/install/Images/Menu2.jpg" alt="Menu2.jpg" width="635">
+<img title="" src="https://github.com/fuegovic/wip-inst-cgpt-c/blob/main/Images/Menu2.jpg" alt="Menu2.jpg" width="635">
 
 **Warning :** The exit procedure is pretty aggressive and will close all instance of node.exe and kill cmd.exe. If you don't know what that means, it's probably ok. If you want to change that behavior, you can edit the ChatGPT-Clone.bat in the installation folder.
 
