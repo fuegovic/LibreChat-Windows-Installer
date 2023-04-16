@@ -37,11 +37,11 @@ Microsoft Defender SmartScreen will prevent it to start
 
 First press on <u>More info</u>
 
-<img src="file:///C:/Git/chatgpt-clone-local-installer/images/WindowsDefender1.png" title="" alt="WindowsDefender1.png" width="128">  
+<img src="https://github.com/fuegovic/wip-inst-cgpt-c/blob/main/Images/WindowsDefender1.png" title="" alt="WindowsDefender1.png" width="128">  
 
 Then select `Run anyway`
 
-<img src="file:///C:/Git/chatgpt-clone-local-installer/images/WindowsDefender2.png" title="" alt="WindowsDefender2.png" width="131">
+<img src="https://github.com/fuegovic/wip-inst-cgpt-c/blob/main/Images/WindowsDefender2.png" title="" alt="WindowsDefender2.png" width="128">
 
 **Details**
 
