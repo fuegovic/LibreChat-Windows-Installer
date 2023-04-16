@@ -31,20 +31,19 @@ function Install-NodeJS {
     # Upgrade Node.js to the latest version available in the winget repository
     Write-Host "Upgrading Node.js to the latest version available..."
     winget upgrade OpenJS.NodeJS --accept-package-agreements  --accept-source-agreements > $null
-   	Write-Host "Node.js upgraded successfully." -ForegroundColor Green
+   	Write-Host "Done!" -ForegroundColor Green
   }
   else {
     Write-Host "Node.js is not installed." -ForegroundColor Red
     # Download and install Node.js using winget
     Write-Host "Downloading and installing Node.js using winget..."
     winget install OpenJS.NodeJS --accept-package-agreements  --accept-source-agreements
-    Write-Host "Node.js installed successfully." -ForegroundColor Green
+    Write-Host "Done!" -ForegroundColor Green
 	return $True # Set ExitRequired to true
   }
 
   # Pause and clear the screen
-  Write-Host "`nPress any key to continue..." -ForegroundColor Magenta
-  $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+  Start-Sleep -Seconds 2
   Clear-Host
 }
 

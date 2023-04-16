@@ -48,9 +48,9 @@ function Install-MeiliSearch ($final_dir, $envfile) {
 
     # Display completion messages to the user.
     Write-Host "Installation and configuration complete." -ForegroundColor Green
-    Write-Host "`nPress any key to continue..." -ForegroundColor Magenta
-    $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
-    Clear-Host
+	# Pause and clear the screen
+	Start-Sleep -Seconds 2
+	Clear-Host
 }
 
 function New-RandomKey {

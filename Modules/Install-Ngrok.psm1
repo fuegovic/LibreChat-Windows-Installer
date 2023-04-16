@@ -47,7 +47,7 @@ function Install-Ngrok($final_dir) {
     $auth_token = ''
     
     do {
-        $response = Read-Host "Do you want to create an Auth token with ngrok (Y/n)?"
+        $response = Read-Host "Do you need to create an Auth token with ngrok (Y/n)?"
     } while ($response -ne "y" -and $response -ne "n" -and $response -ne "")
 
     if ($response -eq "y" -or $response -eq "") {
@@ -99,10 +99,7 @@ function Install-Ngrok($final_dir) {
 
     # confirm output with user
     Write-Host "ngrok has been installed in $final_dir"
-    Write-Host "Auth token: $auth_token"
-
-    # Pause and clear the screen
-    Write-Host "`nPress any key to continue..." -ForegroundColor Magenta
-    $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
-    Clear-Host
+	# Pause and clear the screen
+	Start-Sleep -Seconds 2
+	Clear-Host
 }

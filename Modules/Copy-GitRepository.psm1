@@ -21,6 +21,7 @@ This function requires git to be installed and added to the PATH environment var
 function Copy-GitRepository ($final_dir) {
 
   # Download chatgpt-clone from github using git clone
+  # Pause and clear the screen
   Clear-Host
   Write-Host "*** Download ChatGPT-Clone from GitHub ***" -ForegroundColor Blue
   Write-Host "`n"
@@ -76,7 +77,6 @@ function Copy-GitRepository ($final_dir) {
   }
 
   # Pause and clear the screen
-  Write-Host "`nPress any key to continue..." -ForegroundColor Magenta
-  $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+  Start-Sleep -Seconds 3
   Clear-Host
 }

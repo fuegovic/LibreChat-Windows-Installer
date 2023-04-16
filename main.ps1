@@ -98,7 +98,7 @@ if ($gitExitRequired -or $nodeExitRequired -eq $true){
   $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')	
   Exit
 }
-
+$InformationPreference = 'Continue'
 # Install Directory, Copy Repository, Create .env File
 # Run Get-InstallDirectory
 $final_dir = Get-InstallDirectory
@@ -142,7 +142,7 @@ Import-Module .\Modules\Get-IniContent.psm1
 Invoke-NpmCommands $final_dir
 
 # Run Copy-TemplateBatFile
-$InformationPreference = 'Continue'
+
 $shortcutLocation = Copy-TemplateBatFile $original_location $final_dir $envfile
 
 # Run Show-InstallationConclusion

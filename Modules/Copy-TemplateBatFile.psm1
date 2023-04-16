@@ -42,25 +42,35 @@ Set-Content $copied_file $batch_contents
 
 Copy-Item "$original_location\Dependencies\ChatGPT-Clone.ico" "$final_dir\ChatGPT-Clone.ico"
 
-# Check to see if the desktop is in OneDrive, in the user's home directory, or both
 $OneDrive = "$env:USERPROFILE\OneDrive\Desktop"
 $UserDesktop = "$env:HOMEPATH\Desktop"
-do {
-    $Location = Read-Host "Which directory would you like to copy the shortcut to? (1 for OneDrive, 2 for Home)"
 
-    if ($Location -ne "1" -and $Location -ne "2") {
-        Write-Host "Invalid input. Please enter 1 or 2." -ForegroundColor Red
+if (Test-Path $OneDrive -PathType Container) {
+    if (Test-Path $UserDesktop -PathType Container) {
+        do {
+            $Location = Read-Host "Which directory would you like to copy the shortcut to?"
+			Write-Host "1 for $OneDrive, 2 for $UserDesktop) : "
+            if ($Location -ne "1" -and $Location -ne "2") {
+                Write-Host "Invalid input. Please enter 1 or 2." -ForegroundColor Red
+            }
+        } until ($Location -eq "1" -or $Location -eq "2")
     }
-} until ($Location -eq "1" -or $Location -eq "2")
+    else {
+        $Location = "1"
+    }
+}
+elseif (Test-Path $UserDesktop -PathType Container) {
+    $Location = "2"
+}
+else {
+    $shortcutLocation = "$final_dir"
+}
 
-if ($Location -eq "1"){
+if ($Location -eq "1") {
     $shortcutLocation = "$OneDrive"
 }
-else{
+elseif ($Location -eq "2") {
     $shortcutLocation = "$UserDesktop"
-}
-else{
-    $shortcutLocation = "$final_dir"
 }
 
 $WshShell = New-Object -comObject WScript.Shell
@@ -73,8 +83,7 @@ $Shortcut.Save()
 Write-Host "The shortcut to ChatGPT-Clone is : $shortcutLocation\ChatGPT-Clone.lnk" -ForegroundColor Cyan
 
 # Pause and clear the screen
-Write-Host "`nPress any key to continue..." -ForegroundColor Magenta
-$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+Start-Sleep -Seconds 4
 Clear-Host
 
 return $shortcutLocation

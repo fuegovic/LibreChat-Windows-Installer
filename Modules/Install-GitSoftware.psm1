@@ -30,7 +30,7 @@ function Install-GitSoftware {
     # Upgrade Git to the latest version available in the winget repository
     Write-Host "Upgrading Git to the latest version available..."
     winget upgrade Git.Git --accept-package-agreements  --accept-source-agreements > $null
- 	Write-Host "Git upgraded successfully." -ForegroundColor Green
+ 	Write-Host "Done!" -ForegroundColor Green
 	
   }
   else {
@@ -39,12 +39,11 @@ function Install-GitSoftware {
     Write-Host "Downloading and installing Git using winget..."
     winget install Git.Git --accept-package-agreements  --accept-source-agreements
     return $True # Set ExitRequired to true
-	Write-Host "Git installed successfully." -ForegroundColor Green
+	Write-Host "Done!" -ForegroundColor Green
 	
   }
   # Pause and clear the screen
-  Write-Host "`nPress any key to continue..." -ForegroundColor Magenta
-  $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+  Start-Sleep -Seconds 2
   Clear-Host
 }
 

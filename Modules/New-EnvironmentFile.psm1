@@ -58,7 +58,6 @@ function New-EnvironmentFile ($template, $envfile, $OpenAIKey, $BingAIToken, $mo
   }
 
   # Pause and clear the screen
-  Write-Host "`nPress any key to continue..." -ForegroundColor Magenta
-  $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+  Start-Sleep -Seconds 2
   Clear-Host
 }
