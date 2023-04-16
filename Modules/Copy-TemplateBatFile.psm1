@@ -47,8 +47,8 @@ $OneDrive = "$env:USERPROFILE\OneDrive\Desktop"
 $UserDesktop = "$env:HOMEPATH\Desktop"
 if ((Test-Path $OneDrive) -and (Test-Path $UserDesktop)) {
     Write-Host "The desktop is located in both OneDrive and $env:HOMEPATH." -ForegroundColor Cyan
-    $Location = Read-Host "Which directory would you like to copy the shortcut to? (OneDrive, Home)"
-    If ($Location -eq "OneDrive"){
+    $Location = Read-Host "Which directory would you like to copy the shortcut to? (1 for OneDrive, 2 for Home)"
+    If ($Location -eq "1"){
         $shortcutLocation = "$OneDrive"
     }
     Else{
