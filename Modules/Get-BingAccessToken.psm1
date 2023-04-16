@@ -66,10 +66,10 @@ do {
         # Ask user for confirmation to leave field blank
         do {
             Write-Output "You have chosen to leave the BINGAI_TOKEN field blank. Without it you will not be able to use BingChat or Sydney."
-            $confirm = Read-Host "Are you sure? (y/n)"
-        } until ($confirm -eq "Y" -or $confirm -eq "N")
+            $confirmSkip = Read-Host "Are you sure? (y/n)"
+        } until ($confirmSkip -eq "Y" -or $confirmSkip -eq "N")
 
-        if ($confirm -eq "N") {
+        if ($confirmSkip -eq "N") {
             # Set BINGAI_TOKEN to null and re-ask for input
             $BINGAI_TOKEN = $null
         } else {
@@ -88,7 +88,7 @@ do {
             $BINGAI_TOKEN = $null
         }
     }
-} until (-not [string]::IsNullOrEmpty($BINGAI_TOKEN))
+} until (-not [string]::IsNullOrEmpty($BINGAI_TOKEN) -or $confirmSkip -eq "Y")
 
 if ($BINGAI_TOKEN) {
     # Replace key with BINGAI_TOKEN in .env file
@@ -110,7 +110,8 @@ if ($BINGAI_TOKEN) {
     }
 } else {
     # Output message that user has skipped entering BINGAI_TOKEN
-    Write-Output "You have chosen to skip entering a BINGAI_TOKEN. You can modify it later by editing the file at $envfile." -ForegroundColor Red
+    Write-Host "You have chosen to skip entering a BINGAI_TOKEN. You can modify it later by editing the file at $envfile." -ForegroundColor Red
+	Start-Sleep -Seconds 3
 }
 
   # Pause and clear the screen

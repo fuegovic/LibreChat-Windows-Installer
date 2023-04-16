@@ -38,7 +38,7 @@ function Show-InstallationConclusion ($final_dir, $shortcutLocation) {
   Write-Host "`n"
   
   # Display the message
-  Write-Host "Install completed." -ForegroundColor Yellow
+  Write-Host "Installation completed." -ForegroundColor Yellow
   
   # Write a debug message with the current time
   Write-Host "Current time: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow

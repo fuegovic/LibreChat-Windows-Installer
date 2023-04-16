@@ -86,7 +86,8 @@ function Get-OpenAIAPIKey ($envfile, $final_dir) {
 
 	} else {
 		# Output message that user has skipped entering OPENAI_KEY
-		Write-Output "You have chosen to skip entering an OPENAI_KEY. You can modify it later by editing the file at $envfile." -ForegroundColor Yellow
+		Write-Host "You have chosen to skip entering an OPENAI_KEY. You can modify it later by editing the file at $envfile." -ForegroundColor Red
+		Start-Sleep -Seconds 3
 	}
 
 	Write-Host "OpenAI API Key Setup Completed" -ForegroundColor Green
