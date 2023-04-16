@@ -20,7 +20,6 @@ This function requires a web browser and an internet connection to access platfo
 # Define the function
 function Get-OpenAIAPIKey ($envfile, $final_dir) {
   Write-Host "*** Setup the OpenAI API Key ***" -ForegroundColor Blue
-  Write-Host "`n"
   # Open webpage for OpenAI API key and ask the user to enter their OPENAI_KEY
   Write-Host "`n"
   Write-Host "Please follow these instructions to get your OpenAI API key:" -ForegroundColor Red
@@ -90,8 +89,8 @@ function Get-OpenAIAPIKey ($envfile, $final_dir) {
 		Write-Output "You have chosen to skip entering an OPENAI_KEY. You can modify it later by editing the file at $envfile." -ForegroundColor Yellow
 	}
 
+	Write-Host "OpenAI API Key Setup Completed" -ForegroundColor Green
 	# Pause and clear the screen
-	Write-Host "`nPress any key to continue..." -ForegroundColor Magenta
-	$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+	Start-Sleep -Seconds 2
 	Clear-Host
 }

@@ -110,24 +110,11 @@ if ($BINGAI_TOKEN) {
     }
 } else {
     # Output message that user has skipped entering BINGAI_TOKEN
-    Write-Output "You have chosen to skip entering a BINGAI_TOKEN. You can modify it later by editing the file at $envfile."
+    Write-Output "You have chosen to skip entering a BINGAI_TOKEN. You can modify it later by editing the file at $envfile." -ForegroundColor Red
 }
 
   # Pause and clear the screen
-  Write-Host "`nPress any key to continue..." -ForegroundColor Magenta
-  $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+  Write-Host "BingAI Access Token Setup Completed" -ForegroundColor Green
+  Start-Sleep -Seconds 2
   Clear-Host
 }
-<#
-Are you sure? (y/n):
-You have chosen to leave the BINGAI_TOKEN field blank. Without it you will not be able to use BingChat or Sydney.
-Are you sure? (y/n):
-You have chosen to leave the BINGAI_TOKEN field blank. Without it you will not be able to use BingChat or Sydney.
-Are you sure? (y/n):
-You have chosen to leave the BINGAI_TOKEN field blank. Without it you will not be able to use BingChat or Sydney.
-Are you sure? (y/n):
-You have chosen to leave the BINGAI_TOKEN field blank. Without it you will not be able to use BingChat or Sydney.
-Are you sure? (y/n):
-You have chosen to leave the BINGAI_TOKEN field blank. Without it you will not be able to use BingChat or Sydney.
-Are you sure? (y/n):
-#>

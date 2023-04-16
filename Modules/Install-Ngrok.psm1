@@ -98,7 +98,7 @@ function Install-Ngrok($final_dir) {
     }
 
     # confirm output with user
-    Write-Host "ngrok has been installed in $final_dir"
+    Write-Host "ngrok has been installed in $final_dir" -ForegroundColor Green
 	# Pause and clear the screen
 	Start-Sleep -Seconds 2
 	Clear-Host

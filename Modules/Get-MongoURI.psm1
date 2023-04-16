@@ -102,9 +102,8 @@ if ($envfile) {
         Add-Content -Path $envfile -Value $key
     }
 }
-Write-Host "MongoDB setup completed"
+Write-Host "MongoDB setup completed" -ForegroundColor Green
 # Pause and clear the screen
-Write-Host "`nPress any key to continue..." -ForegroundColor Magenta
-$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+Start-Sleep -Seconds 2
 Clear-Host
 }

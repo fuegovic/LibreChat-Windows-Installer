@@ -48,8 +48,8 @@ $UserDesktop = "$env:HOMEPATH\Desktop"
 if (Test-Path $OneDrive -PathType Container) {
     if (Test-Path $UserDesktop -PathType Container) {
         do {
-            $Location = Read-Host "Which directory would you like to copy the shortcut to?"
-			Write-Host "1 for $OneDrive, 2 for $UserDesktop) : "
+            Write-Host "Which directory would you like to copy the shortcut to?"
+			$Location = Read-Host "(1) for $OneDrive // (2) for $UserDesktop"
             if ($Location -ne "1" -and $Location -ne "2") {
                 Write-Host "Invalid input. Please enter 1 or 2." -ForegroundColor Red
             }

@@ -4,14 +4,6 @@ A function that gets the install directory from the user or uses the default one
 
 .DESCRIPTION
 This function prompts the user to choose between using the default install directory or entering a custom one. It then validates the user input and returns the final install directory. It also enables debug output for this module if the $Debug variable is set to $true.
-
-.EXAMPLE
-Get-InstallDirectory
-
-This example gets the install directory from the user or uses the default one.
-
-.NOTES
-This function requires the Get-ValidDirectory function to validate the user input.
 #>
 
 function Get-InstallDirectory {
@@ -36,15 +28,9 @@ function Get-InstallDirectory {
                 }
             }
             if ($overwrite -in @("Y","y","")) {
+				Write-Host "deleting the content of $default_dir ..." -NoNewline
                 Remove-Item $default_dir\* -Recurse -Force
                 return $default_dir
-				Write-Host "deleting the content of $default_dir " -NoNewline
-				Start-Sleep -Seconds 1
-				Write-Host "." -NoNewline
-				Start-Sleep -Seconds 1
-				Write-Host "." -NoNewline
-				Start-Sleep -Seconds 1
-				Write-Host "." -NoNewline
             }
         }
         else {
@@ -80,14 +66,8 @@ function Get-InstallDirectory {
                 }
             }
             if ($overwrite -in @("Y","y","")) {
+				Write-Host "deleting the content of $custom_path ..." -NoNewline
                 Remove-Item $custom_path\* -Recurse -Force
-				Write-Host "deleting the content of $custom_path " -NoNewline
-				Start-Sleep -Seconds 1
-				Write-Host "." -NoNewline
-				Start-Sleep -Seconds 1
-				Write-Host "." -NoNewline
-				Start-Sleep -Seconds 1
-				Write-Host "." -NoNewline
             }
             else {
                 Get-InstallDirectory

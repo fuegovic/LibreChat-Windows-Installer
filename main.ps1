@@ -98,7 +98,9 @@ if ($gitExitRequired -or $nodeExitRequired -eq $true){
   $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')	
   Exit
 }
+
 $InformationPreference = 'Continue'
+
 # Install Directory, Copy Repository, Create .env File
 # Run Get-InstallDirectory
 $final_dir = Get-InstallDirectory
