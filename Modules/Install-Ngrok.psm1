@@ -47,7 +47,14 @@ function Install-Ngrok($final_dir) {
     $auth_token = ''
     
     do {
-        $response = Read-Host "Do you need to create an Auth token with ngrok (Y/n)?"
+        Write-Host "ngrok enables you to easily distribute your own instance of chatgpt-clone on the internet, "
+		Write-Host "so you can share it or access it from another device, like your phone."
+		Write-Host "`n"
+		Write-Host "To use ngrok you need to setup your Auth Token"
+		Write-Host "If you do not want to do it at the moment or have already done it,  press (N) to skip this step"
+		Write-Host "If it is your first time setting up ngrok, press (Y) and you will be guided through the process"
+		Write-Host "`n"
+		$response = Read-Host "Do you need to create an Auth token with ngrok (Y/n)?"
     } while ($response -ne "y" -and $response -ne "n" -and $response -ne "")
 
     if ($response -eq "y" -or $response -eq "") {
