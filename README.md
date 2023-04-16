@@ -27,7 +27,7 @@ This script requires Windows 10 64 bits, version 21H1 or higher.
 
 * Double click on install.bat and follow the on-screen instructions
 
-* Use the `ChatGPT Clone` shortcut on your desktop to start or update the project
+* Use the `ChatGPT-Clone` shortcut on your desktop to start or update the project
 
 * Profit!
 
@@ -44,10 +44,6 @@ Run the install.bat file and follow the on-screen prompts. This script will:
 * Install [Ngrok](https://ngrok.com)
 * Guide you through the process of acquiring the required [MongoDB URI](https://www.mongodb.com), [OpenAI API key](https://platform.openai.com/account/api-keys), and [BingAI Access Token](https://www.bing.com/)
 * Provide a bat file to run and update ChatGPT-Clone
-
-**Warning :** You will have to press a key to continue multiple times during the process
-
-
 
 **If you already have your MongoDB URI, OpenAI API key, or BingAI Access Token you can fill the `config.ini` file to skip these steps during the installation**
 
@@ -78,7 +74,7 @@ By default the max indexing memory is set to 8Gb, you can set it to any value yo
 
 When you are done you should have a working installation of [ChatGPT-Clone](https://github.com/danny-avila/chatgpt-clone).
 
-Go to your desktop and use the shortcut `ChatGPT Clone` to start and/or update the project
+Go to your desktop and use the shortcut `ChatGPT-Clone` to start and/or update the project
 
 **On the first screen**
 
