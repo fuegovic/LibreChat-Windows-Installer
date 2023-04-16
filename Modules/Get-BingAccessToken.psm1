@@ -35,8 +35,8 @@ function Get-BingAccessToken {
   Write-Host "(On certain browsers, you might have to click `>>` on the top of DevTools to find it)"
   Write-Host "In the left sidebar, under Storage, click on the Cookies dropdown menu to expand it"
   Write-Host "Look for the cookie named: _U"
-  Write-Host "Right click on the _U cookie Value and select Edit Value"
-  Write-Host "Right click again on the _U cookie Value and select copy"
+  Write-Host "Click on the _U cookie"
+  Write-Host "Its value will fill a box just bellow the list, select the string of characters and copy it"
   Write-Host "`n"
   Write-Host "Method B:" -ForegroundColor DarkCyan
   Write-Host "On bing.com, make certain you are logged in"
@@ -79,7 +79,8 @@ do {
     } else {
         # Ask user for confirmation that BINGAI_TOKEN is correct
         do {
-            Write-Output "You have entered the following BINGAI_TOKEN: $BINGAI_TOKEN"
+            Write-Host "`n" 
+			Write-Output "You have entered the following BINGAI_TOKEN: $BINGAI_TOKEN"
             $confirm = Read-Host "Is this correct? (y/n)"
         } until ($confirm -eq "Y" -or $confirm -eq "N")
 
