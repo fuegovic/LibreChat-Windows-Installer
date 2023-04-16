@@ -16,9 +16,7 @@ The use of either the config file or the parameters is optional.
 
 This script was made by Fuegovic (https://github.com/fuegovic), a amateur developer and a musician/producer. You can check out his music on Bandcamp (https://fuegovic.bandcamp.com) or Spotify (https://open.spotify.com/artist/3ZfaxdODbE1NrfQYsGO92R)
 #>
-
-#region - Init
-
+# Init
 # Define the parameters
 Param (
   [switch]$Debug,
@@ -40,10 +38,7 @@ if ($Debug) {
 # Get the current location and assign it to a variable
 $original_location = Get-Location
 
-#endregion
-
-#region - Start Parameters Check
-
+# Start Parameters Check
 # Check if the user provided all the parameters or some of them or none of them
 if ($PSBoundParameters.Count -eq 3) {
   # Use all the parameters
@@ -58,9 +53,7 @@ if ($PSBoundParameters.Count -eq 3) {
   }
 }
 
-#endregion
-
-#region - Import all the modules
+# Import all the modules
 Import-Module .\Modules\Get-IniContent.psm1
 Import-Module .\Modules\Get-InstallDirectory.psm1
 Import-Module .\Modules\Install-GitSoftware.psm1
@@ -75,10 +68,8 @@ Import-Module .\Modules\Install-Ngrok.psm1
 Import-Module .\Modules\Invoke-NpmCommands.psm1
 Import-Module .\Modules\Copy-TemplateBatFile.psm1
 Import-Module .\Modules\Show-InstallationConclusion.psm1
-#endregion
 
-#region - Check if there is a config.ini file and read it
-
+# Check if there is a config.ini file and read it
 if (Test-Path .\config.ini) {
   $config = Get-IniContent -Path .\config.ini
   # Check if the parameters are missing or invalid and use the values from the config file
@@ -92,14 +83,12 @@ if (Test-Path .\config.ini) {
     $bingai_token = $config.API.bingai_token
   }
 }
-#endregion
 
-#region - Install requirements (Git and Node.js)
-
-#Install Git
+# Install requirements (Git and Node.js)
+# Install Git
 $gitExitRequired = [bool] (Install-GitSoftware)
 
-#Install Node.js
+# Install Node.js
 $nodeExitRequired = [bool] (Install-NodeJS)
 
 
@@ -109,10 +98,8 @@ if ($gitExitRequired -or $nodeExitRequired -eq $true){
   $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')	
   Exit
 }
-#endregion
 
-#region - Install Directory, Copy Repository, Create .env File
-
+# Install Directory, Copy Repository, Create .env File
 # Run Get-InstallDirectory
 $final_dir = Get-InstallDirectory
 
@@ -123,20 +110,15 @@ Copy-GitRepository $final_dir
 $template = "$final_dir\api\.env.example"
 $envfile = "$final_dir\api\.env"
 Invoke-Command -ScriptBlock {New-EnvironmentFile $template $envfile $openai_key $bingai_token $mongo_uri}
-#endregion
 
-#region - Soft Requirements (MeiliSearch and ngrok)
-
+# Soft Requirements (MeiliSearch and ngrok)
 # Downloading Meilisearch
 Install-MeiliSearch -final_dir $final_dir -envfile $envfile
 
 # Run Install-Ngrok
-$choice = Install-Ngrok $final_dir 
+Install-Ngrok $final_dir 
 
-#endregion
-
-#region - Instruction for MongoDB, OpenAI, Bing and ngrok
-
+# Instruction for MongoDB, OpenAI, Bing and ngrok
 # If the mongo_uri parameter is missing or invalid, run Get-MongoURI
 if (-not $mongo_uri) {
   Get-MongoURI $envfile $final_dir
@@ -150,28 +132,23 @@ if (-not $openai_key) {
 # If the bingai_token parameter is missing or invalid, run Get-MongoURI
 if (-not $bingai_token) {
   Get-BingAccessToken $envfile $final_dir
- 
 }
 
 # Run Get-IniContent
 Import-Module .\Modules\Get-IniContent.psm1
-#endregion
 
-#region - Build Project, Create .bat File, Conclusion
-
+# Build Project, Create .bat File, Conclusion
 # Run Invoke-NpmCommands
 Invoke-NpmCommands $final_dir
 
 # Run Copy-TemplateBatFile
-$shortcutLocation = Copy-TemplateBatFile -original_location $original_location -final_dir $final_dir
+$InformationPreference = 'Continue'
+$shortcutLocation = Copy-TemplateBatFile $original_location $final_dir $envfile
 
 # Run Show-InstallationConclusion
 Show-InstallationConclusion $final_dir $shortcutLocation
 
-#endregion
-
-#region - Clean Up and Exit
-
+# Clean Up and Exit
 # Clear all Variables, Modules, and the console window
 Remove-Variable * -ErrorAction SilentlyContinue; Remove-Module *; 
 $error.Clear(); 
@@ -179,5 +156,3 @@ Clear-Host
 
 # Exit the script with a success code
 Exit 0
-
-#endregion
