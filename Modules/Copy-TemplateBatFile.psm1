@@ -45,20 +45,18 @@ Copy-Item "$original_location\Dependencies\ChatGPT-Clone.ico" "$final_dir\ChatGP
 # Check to see if the desktop is in OneDrive, in the user's home directory, or both
 $OneDrive = "$env:USERPROFILE\OneDrive\Desktop"
 $UserDesktop = "$env:HOMEPATH\Desktop"
-if ((Test-Path $OneDrive) -and (Test-Path $UserDesktop)) {
-    Write-Host "The desktop is located in both OneDrive and $env:HOMEPATH." -ForegroundColor Cyan
+do {
     $Location = Read-Host "Which directory would you like to copy the shortcut to? (1 for OneDrive, 2 for Home)"
-    If ($Location -eq "1"){
-        $shortcutLocation = "$OneDrive"
+
+    if ($Location -ne "1" -and $Location -ne "2") {
+        Write-Host "Invalid input. Please enter 1 or 2." -ForegroundColor Red
     }
-    Else{
-        $shortcutLocation = "$UserDesktop"
-    }
-}
-elseif (Test-Path $OneDrive){
+} until ($Location -eq "1" -or $Location -eq "2")
+
+if ($Location -eq "1"){
     $shortcutLocation = "$OneDrive"
 }
-elseif(Test-Path $UserDesktop){
+else{
     $shortcutLocation = "$UserDesktop"
 }
 else{
