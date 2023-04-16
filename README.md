@@ -108,7 +108,7 @@ Go to your desktop and use the shortcut `ChatGPT Clone` to start and/or update t
 
 *This script installs third-party software. By using this script you certify that you have read and agree with the license agreements and restrictions of any software installed by this script.*
 
-This is only an installation script, for ChatGPT-Clone, a project created by @danny-avila. A huge thanks to him and the other contributors for their constant updates on the project!
+This is only an installation script for ChatGPT-Clone. A project created by @danny-avila. A huge thanks to him and the other contributors for their constant updates on the project!
 
 If you want to contribute to ChatGPT-Clone or report any issues about the main project, you can visit the GitHub repository at [danny-avila/chatgpt-clone](https://github.com/danny-avila/chatgpt-clone) or join the community on [discord](https://discord.gg/NGaa9RPCft).
 
