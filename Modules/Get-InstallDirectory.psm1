@@ -91,7 +91,7 @@ function Get-InstallDirectory {
 					break
 				} 
 				catch {
-					Write-Host "Invalid path. Please enter a valid path name (or leave blank to go back)" -ForegroundColor Yellow
+					Write-Host "Invalid path. Please enter a valid path name (example: C:\chatgpt-clone)" -ForegroundColor Yellow
 					$custom_path = Read-Host "Enter the path for the custom installation dir"
 				}
 			}
