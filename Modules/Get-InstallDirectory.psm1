@@ -28,7 +28,7 @@ function Get-InstallDirectory {
                 }
             }
             if ($overwrite -in @("Y","y","")) {
-				Write-Host "deleting the content of $default_dir ..." -NoNewline
+				Write-Host "deleting the content of $default_dir ..."
                 Remove-Item $default_dir\* -Recurse -Force
                 return $default_dir
             }
@@ -66,7 +66,7 @@ function Get-InstallDirectory {
                 }
             }
             if ($overwrite -in @("Y","y","")) {
-				Write-Host "deleting the content of $custom_path ..." -NoNewline
+				Write-Host "deleting the content of $custom_path ..."
                 Remove-Item $custom_path\* -Recurse -Force
             }
             else {
