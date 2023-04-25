@@ -76,15 +76,15 @@ do {
             # Set BINGAI_TOKEN to null and re-ask for input
             $BINGAI_TOKEN = $null
         } else {
-            # Set BINGAI_TOKEN to empty string and proceed with script
-            $BINGAI_TOKEN = ""
+            # Set BINGAI_TOKEN to user_provided string and proceed with script
+            $BINGAI_TOKEN = "user_provided"
         }
     } else {
         # Ask user for confirmation that BINGAI_TOKEN is correct
         do {
             Write-Host "`n" 
-			Write-Output "You have entered the following BINGAI_TOKEN: $BINGAI_TOKEN"
-            $confirm = Read-Host "Is this correct? (y/n)"
+			Write-Output "Your BINGAI_TOKEN has been set"
+            $confirm = Read-Host "Are you ready to continue? (press n to re-enter your token) (Y/n)"
         } until ($confirm -eq "Y" -or $confirm -eq "N")
 
         if ($confirm -eq "N") {
