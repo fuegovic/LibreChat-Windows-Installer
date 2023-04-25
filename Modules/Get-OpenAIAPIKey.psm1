@@ -29,14 +29,17 @@ function Get-OpenAIAPIKey ($envfile, $final_dir) {
   Write-Host "- Go to 'API Keys' tab"
   Write-Host "- Copy your secret key (sk-xxxxxxxxxxxxxxxxxxxx) or create a new one if you don't have one"
   Write-Host "`n"
-  Write-Host "Press any key to open the webpage..." -ForegroundColor DarkYellow
+  Write-Host "Press the (Enter) key to open the webpage or any other key to continue..." -ForegroundColor DarkYellow
 
-  # Wait for the user to press any key before opening the webpage
-  $null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+   # Wait for the user to press any key before continuing
+  $pressedKey = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
-  # Write the webpage URL for OpenAI API key
-  Write-Output "Please visit this webpage to setup your OpenAI API key: https://platform.openai.com/account/api-keys"
-  Start-Process "https://platform.openai.com/account/api-keys"
+  if ($pressedKey.VirtualKeyCode -eq 13) {
+    # If the Enter key is pressed, open the webpage and continue with the script
+	Start-Process "https://platform.openai.com/account/api-keys"
+} else {
+    # If any other key is pressed, continue with the script
+}
 
 	# Prompt user for OPENAI_KEY
 	$OPENAI_KEY = Read-Host "Please enter your OPENAI_KEY (leave blank to skip)"

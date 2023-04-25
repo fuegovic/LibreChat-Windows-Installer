@@ -54,6 +54,7 @@ if ($PSBoundParameters.Count -eq 3) {
 }
 
 # Import all the modules
+Import-Module .\Modules\Show-InstallationIntroduction.psm1
 Import-Module .\Modules\Get-IniContent.psm1
 Import-Module .\Modules\Get-InstallDirectory.psm1
 Import-Module .\Modules\Install-GitSoftware.psm1
@@ -83,6 +84,9 @@ if (Test-Path .\config.ini) {
     $bingai_token = $config.API.bingai_token
   }
 }
+
+# Show Intro
+Show-InstallationIntroduction
 
 # Install requirements (Git and Node.js)
 # Install Git

@@ -50,14 +50,17 @@ function Get-BingAccessToken {
   Write-Host "`n"
   Write-Host "Alternatively, you can use a third-party tool like EditThisCookie or Cookie-Editor to access your cookies"
   Write-Host "`n"
-  Write-Host "Press any key to open bing.com..." -ForegroundColor DarkYellow
+  Write-Host "Press the (Enter) key to open bing.com or any other key to continue..." -ForegroundColor DarkYellow
 
-  # Wait for the user to press any key before opening the webpage
-  $null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+  # Wait for the user to press any key before continuing
+  $pressedKey = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
-  # Open webpage for Bing Access Token
-  Write-Output "Opening Bing's website..."
-  Start-Process "https://www.bing.com/"
+  if ($pressedKey.VirtualKeyCode -eq 13) {
+    # If the Enter key is pressed, open the webpage and continue with the script
+    Start-Process "https://www.bing.com/"
+} else {
+    # If any other key is pressed, continue with the script
+}
 
 # Prompt user for BINGAI_TOKEN
 do {

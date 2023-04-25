@@ -36,15 +36,17 @@ Write-Host "- In 'Choose a connection method' select 'Connect your application'"
 Write-Host "- Driver = Node.js / Version = 4.1 or later"
 Write-Host "- Copy the connection string"
 Write-Host "`n"
-Write-Host "Press any key to open the webpage..." -ForegroundColor DarkYellow
+Write-Host "Press the (Enter) key to open the webpage or any other key to continue..." -ForegroundColor DarkYellow
 
 # Wait for the user to press any key before continuing
-$null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+$pressedKey = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
-# Write the webpage URL for MongoDB database
-Write-Output "Please visit this webpage to setup your MongoDB database: https://www.mongodb.com/"
-Start-Process "https://www.mongodb.com/"
-# Declare a variable to store the input
+if ($pressedKey.VirtualKeyCode -eq 13) {
+    # If the Enter key is pressed, open the webpage and continue with the script
+    Start-Process "https://www.mongodb.com/"
+} else {
+    # If any other key is pressed, continue with the script
+}
 
 # Step 1: Ask user for MONGO_URI
 $mongoUri = Read-Host "Please enter your MongoDB connection string"
