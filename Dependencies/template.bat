@@ -94,7 +94,7 @@ if "%running%" NEQ "0" (
 	
 ) else (
 	start /MIN cmd /k "meilisearch --master-key %_MEILIMASTERKEY% --max-indexing-memory 8192"
-	start /MIN cmd /k "cd api && npm start"
+	start /MIN cmd /k "npm run backend"
 	goto menu2
 )
 
@@ -125,7 +125,7 @@ if "%running%" NEQ "0" (
 	
 ) else (
     start "MeiliSearch" /MIN cmd /k "meilisearch --master-key %_MEILIMASTERKEY% --max-indexing-memory 8192"
-    start "ChatGPT-Clone" /MIN cmd /k "cd api && npm start"
+    start "ChatGPT-Clone" /MIN cmd /k "npm run backend"
 
 	REM Start ngrok and redirect the output to a file
 	start "Public URL" /MIN cmd /k "ngrok http 3080 --log=stdout > ngrok.log &"
@@ -164,9 +164,12 @@ rem	wmic process where 'commandline like "%%node server/index.js%%"' call termin
 	goto update
 	
 ) else (
-	start "Git Pull" cmd /c "git pull origin main"
-	start "Update Client" cmd /c "cd client && npm ci && npm run build"
-	start "Update API" cmd /c "cd api && npm ci"
+	cls
+	call git pull origin main
+	call npm ci
+	call npm run frontend
+	echo update complete 
+	pause
 	goto menu
 )
 
