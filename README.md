@@ -21,7 +21,7 @@ This script requires Windows 10 64 bits, version 21H1 or higher.
 
 **TL;DR**
 
-* Download the latest release ➡️ [v0.1.2](https://github.com/fuegovic/chatgpt-clone-local-installer/archive/refs/tags/v0.1.2.zip)
+* Download the latest release ➡️ [v0.2](https://github.com/fuegovic/chatgpt-clone-local-installer/archive/refs/tags/v0.2.zip)
   
   - or  download the zip file (click on code - select download zip) ⤴️
 
