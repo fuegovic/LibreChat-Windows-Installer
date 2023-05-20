@@ -4,7 +4,9 @@ This script automates the local Windows 64 bits installation of :
 
 [GitHub - danny-avila/chatgpt-clone](https://github.com/danny-avila/chatgpt-clone)
 
-⚠️ Due to some new features, this script no longer updates automatically. If you have used my installer before, please backup your .env keys (MONGO_URI and OPENAI_KEY) and reinstall from scratch. ⚠️
+⚠️ Due to some new features, this script no longer updates automatically. If you have used my installer before, please backup your .env keys (MONGO_URI and OPENAI_KEY) and reinstall from scratch.
+
+⚠️ Also, if you need to update please follow this procedure, open with the shortcut, and select exit. Then open again with the shortcut and select update. (this is the safest way for now), it will be fixed in a future update.
 
 I apologize for the inconvenience.🌻
 
