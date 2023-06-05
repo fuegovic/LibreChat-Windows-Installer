@@ -30,7 +30,7 @@ This script requires Windows 10 64 bits, version 21H1 or higher.
 
 **TL;DR**
 
-* Download the latest release ➡️ [v0.2](https://github.com/fuegovic/chatgpt-clone-local-installer/archive/refs/tags/v0.2.zip)
+* Download the latest release ➡️ [v0.3](https://github.com/fuegovic/LibreChat-Windows-Installer/releases/tag/v0.3)
   
   - or  download the zip file (click on code - select download zip) ⤴️
 
@@ -76,7 +76,6 @@ Run the install.bat file and follow the on-screen prompts. This script will:
 
 [API]
 ;openai_key = <your OpenAI key>
-;bingai_token = <your Bing token>
 ```
 
 Alternatively, you can pass the same values as named parameters when running the script from a powershell terminal. For example:

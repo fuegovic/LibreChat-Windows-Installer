@@ -8,7 +8,7 @@ Write-Host "***  Create LibreChat.bat, used to Start and Update the project ***"
 Write-Host "`n"
 
 # Set the paths to the template batch file and the destination for the copied batch file
-$template_file = "$original_location/Dependencies/template.bat"
+$template_file = "$original_location\Dependencies\template.bat"
 $copied_file = "$final_dir\LibreChat.bat"
 
 # Copy the template batch file to the destination directory
@@ -29,7 +29,8 @@ Copy-Item "$original_location\Dependencies\LibreChat.ico" "$final_dir\LibreChat.
 
 $OneDrive = "$env:USERPROFILE\OneDrive\Desktop"
 $UserDesktop = "$env:HOMEPATH\Desktop"
-
+WriteHost "$UserDesktop"
+pause
 if (Test-Path $OneDrive -PathType Container) {
     if (Test-Path $UserDesktop -PathType Container) {
         do {
@@ -57,7 +58,7 @@ if ($Location -eq "1") {
 elseif ($Location -eq "2") {
     $shortcutLocation = "$UserDesktop"
 }
-
+pause
 $WshShell = New-Object -comObject WScript.Shell
 $Shortcut = $WshShell.CreateShortcut("$shortcutLocation\LibreChat.lnk")
 $Shortcut.TargetPath = "$final_dir\LibreChat.bat"

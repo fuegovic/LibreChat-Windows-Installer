@@ -1,22 +1,3 @@
-<#
-.SYNOPSIS
-A function that gets the MongoDB connection string from the user and stores it in the .env file.
-
-.DESCRIPTION
-This function opens a webpage for MongoDB database and asks the user to create a database and get their connection string. It then validates the user input and replaces the key with MONGO_URI in the .env file.
-
-.PARAMETER envfile
-The path to the .env file where the MONGO_URI will be stored.
-
-.EXAMPLE
-Get-MongoURI -envfile C:\Users\user\Documents\.env
-
-This example gets the MongoDB connection string from the user and stores it in the C:\Users\user\Documents\.env file.
-
-.NOTES
-This function requires a web browser and an internet connection to access mongodb.com.
-#>
-
 # Define the function
 function Get-MongoURI ($envfile, $final_dir) {
 Write-Host "*** Setup the MongoDB Database ***" -ForegroundColor Blue
@@ -52,17 +33,11 @@ if ($pressedKey.VirtualKeyCode -eq 13) {
 $mongoUri = Read-Host "Please enter your MongoDB connection string"
 
 # Step 2: Check for '<' and '>' characters around password
-if ($mongoUri.Contains("<") -or $mongoUri.Contains(">")) {
+while ($mongoUri.Contains("<") -or $mongoUri.Contains(">")) {
     Write-Host "Please remove the '<' and '>' characters from your MongoDB connection string." -ForegroundColor Red
     
     # Prompt user to re-enter MONGO_URI
-    $mongoUri = ""
-    while (($mongoUri -match "<") -or ($mongoUri -match ">")) {
-        $mongoUri = Read-Host "Please enter your MongoDB connection string" -ForegroundColor Red
-        if ($mongoUri.Contains("<") -or $mongoUri.Contains(">")) {
-            Write-Host "Please remove the '<' and '>' characters from your MongoDB connection string." -ForegroundColor Red
-        }
-    }
+    $mongoUri = Read-Host "Please enter your MongoDB connection string"
 }
 
 # Step 3: (optional) Check for invalid URI
@@ -88,7 +63,6 @@ while ($true) {
 }
 
 # Step 8: Add $MONGO_URI to .env file
-$envfile = "$final_dir\api\.env"
 $mongoUriLine = "MONGO_URI="
 $mongoUriValue = ($mongoUri -replace '&w=majority$', '')
 if ($envfile) {
