@@ -87,9 +87,9 @@ if "%ERRORLEVEL%"=="0" (
 if "%running%" NEQ "0" (
     echo One or more services are already running, they will be terminated before we continue.
     pause
-	taskkill /F /IM node.exe
-	taskkill /F /IM meilisearch.exe
-	taskkill /F /IM ngrok.exe
+	taskkill /F /IM node.exe > nul 2>&1
+	taskkill /F /IM meilisearch.exe > nul 2>&1
+	taskkill /F /IM ngrok.exe > nul 2>&1
 	goto start_local
 	
 ) else (
@@ -118,9 +118,9 @@ if "%ERRORLEVEL%"=="0" (
 if "%running%" NEQ "0" (
     echo One or more services are already running, they will be terminated before we continue.
     pause
-	taskkill /F /IM node.exe
-	taskkill /F /IM meilisearch.exe
-	taskkill /F /IM ngrok.exe
+	taskkill /F /IM node.exe > nul 2>&1
+	taskkill /F /IM meilisearch.exe > nul 2>&1
+	taskkill /F /IM ngrok.exe > nul 2>&1
 	goto start_public
 	
 ) else (
@@ -143,35 +143,15 @@ if "%running%" NEQ "0" (
 
 :update
 set running=0
-tasklist /FI "WINDOWTITLE eq npm start" | find /i "node.exe" > nul
-if "%ERRORLEVEL%"=="0" (
-    echo 'LibreChat' is already running.
-    set /a running+=1
-)
-
-tasklist /FI "IMAGENAME eq meilisearch.exe" | find /i "meilisearch.exe" > nul
-if "%ERRORLEVEL%"=="0" (
-    echo 'meilisearch.exe' is already running.
-    set /a running+=1
-)
-
-if "%running%" NEQ "0" (
-    echo One or more services are already running, they will be terminated before we continue.
-    pause
-rem	wmic process where 'commandline like "%%node server/index.js%%"' call terminate
-	taskkill /F /IM node.exe
-	taskkill /F /IM meilisearch.exe
-	goto update
-	
-) else (
-	cls
-	call git pull origin main
-	call npm ci
-	call npm run frontend
-	echo update complete 
-	pause
-	goto menu
-)
+taskkill /F /IM node.exe > nul 2>&1
+taskkill /F /IM meilisearch.exe > nul 2>&1
+cls
+call git pull origin main
+call npm ci
+call npm run frontend
+echo update complete 
+pause
+goto menu
 
 :web-app
 start msedge --app=http://localhost:3080
@@ -179,10 +159,10 @@ goto menu2
 
 :exit
 rem wmic process where 'commandline like "%%node server/index.js%%"' call terminate
-taskkill /F /IM node.exe
-taskkill /F /IM meilisearch.exe
-taskkill /F /IM ngrok.exe
+taskkill /F /IM node.exe > nul 2>&1
+taskkill /F /IM meilisearch.exe > nul 2>&1
+taskkill /F /IM ngrok.exe > nul 2>&1
 echo bye
 pause
-taskkill /F /IM cmd.exe
+taskkill /F /IM cmd.exe > nul 2>&1
 exit /b 0

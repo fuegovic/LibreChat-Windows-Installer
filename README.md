@@ -4,11 +4,8 @@ This script automates the local Windows 64 bits installation of :
 
 [GitHub - danny-avila/LibreChat](https://github.com/danny-avila/LibreChat)
 
-⚠️ Due to some new features, this script no longer updates automatically. If you have used my installer before, please backup your .env keys (MONGO_URI and OPENAI_KEY) and reinstall from scratch.
-
-⚠️ Also, if you need to update please follow this procedure, open with the shortcut, and select exit. Then open again with the shortcut and select update. (this is the safest way for now), it will be fixed in a future update.
-
-I apologize for the inconvenience.🌻
+I you have an issue with the installer you can contact me here
+or ping me on [discord](https://discord.gg/mvaZ3f5b)
 
 ## Table of Contents
 
