@@ -1,22 +1,3 @@
-<#
-.SYNOPSIS
-A function that copies a Git repository from a URL to a local directory.
-
-.DESCRIPTION
-This function uses the git clone command to download a Git repository from a URL to a local directory. It also checks if the destination directory is empty and prompts the user to overwrite or exit.
-
-.PARAMETER final_dir
-The path of the local directory where the Git repository will be copied.
-
-.EXAMPLE
-Copy-GitRepository -final_dir C:\Users\user\Documents\chatgpt-clone
-
-This example copies the chatgpt-clone repository from GitHub to the C:\Users\user\Documents\chatgpt-clone directory.
-
-.NOTES
-This function requires git to be installed and added to the PATH environment variable.
-#>
-
 # Define the function
 function Copy-GitRepository ($final_dir) {
 
@@ -28,7 +9,7 @@ function Copy-GitRepository ($final_dir) {
   Write-Host "The install directory is: " -NoNewline
   Write-Host "$final_dir" -ForegroundColor Green
   # Define the URL of the Git repository
-  $repo = "https://github.com/danny-avila/chatgpt-clone.git"
+  $repo = "https://github.com/danny-avila/LibreChat.git"
 
   # Check if the destination directory exists and is empty
   $dir_content = Get-ChildItem -Path $final_dir -Force -ErrorAction SilentlyContinue

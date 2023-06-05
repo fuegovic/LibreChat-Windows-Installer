@@ -47,7 +47,7 @@ function Install-Ngrok($final_dir) {
     $auth_token = ''
     
     do {
-        Write-Host "ngrok enables you to easily distribute your own instance of chatgpt-clone on the internet, "
+        Write-Host "ngrok enables you to easily distribute your own instance of LibreChat on the internet, "
 		Write-Host "so you can share it or access it from another device, like your phone."
 		Write-Host "`n"
 		Write-Host "To use ngrok you need to setup your Auth Token"

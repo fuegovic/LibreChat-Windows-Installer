@@ -1,25 +1,3 @@
-<#
-.SYNOPSIS
-This PowerShell module contains a function called "Install-MeiliSearch" that installs the MeiliSearch software on a Windows machine, generates a random 44-bit master key, and updates the .env file with the MeiliSearch master key and search variable set to true.
-
-.DESCRIPTION
-This PowerShell module is used to install the MeiliSearch software on a Windows machine and customize the .env file with a random MeiliSearch master key and setting the search variable to true. MeiliSearch is an open-source search engine that provides fast and relevant search results.
-
-.PARAMETER
-final_dir: The path of the directory where the MeiliSearch .exe file will be download and installed.
-
-envfile: The path to the file to update with the MeiliSearch master key and search variable set to true. The file is assumed to be in the following format:
-"MEILI_MASTER_KEY=<master_key_string>"
-"SEARCH=<search_boolean>"
-
-.EXAMPLE
-Install-MeiliSearch -final_dir "C:\location" -envfile "D:\configuration\.env"
-
-This command installs the latest version of MeiliSearch software from GitHub to the directory located at "C:\location", generates a random 44-bit master key, sets the .env file present in "D:\configuration" with the MeiliSearch master key and setting the search variable to true.
-
-.NOTES
-This PowerShell module does not require administrative permissions to be executed.
-#>
 function Install-MeiliSearch ($final_dir, $envfile) {
 	Write-Host "*** Download the latest version of MeiliSearch ***" -ForegroundColor Blue
 	Write-Host "`n"

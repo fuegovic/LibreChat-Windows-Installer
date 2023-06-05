@@ -1,22 +1,3 @@
-<#
-.SYNOPSIS
-A function that gets the OpenAI API key from the user and stores it in the .env file.
-
-.DESCRIPTION
-This function opens a webpage for OpenAI API key and asks the user to enter their OPENAI_KEY. It then replaces the key with OPENAI_KEY in the .env file.
-
-.PARAMETER envfile
-The path to the .env file where the OPENAI_KEY will be stored.
-
-.EXAMPLE
-Get-OpenAIAPIKey -envfile C:\Users\user\Documents\.env
-
-This example gets the OpenAI API key from the user and stores it in the C:\Users\user\Documents\.env file.
-
-.NOTES
-This function requires a web browser and an internet connection to access platform.openai.com.
-#>
-
 # Define the function
 function Get-OpenAIAPIKey ($envfile, $final_dir) {
 	Write-Host "*** Setup the OpenAI API Key ***" -ForegroundColor Blue
@@ -73,7 +54,6 @@ function Get-OpenAIAPIKey ($envfile, $final_dir) {
   
 	  if ($OPENAI_API_KEY) {
 	  # Replace key with OPENAI_API_KEY in .env file
-	  $envfile = "$final_dir\api\.env"
 	  $openaiKeyLine = "OPENAI_API_KEY="
 	  $openaiKeyValue = $OPENAI_API_KEY
 	  if ($envfile) {

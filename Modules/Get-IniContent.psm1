@@ -1,29 +1,10 @@
-<#
-.SYNOPSIS
-A function that reads an ini file and returns a hashtable of its contents.
-
-.DESCRIPTION
-This function takes a path to an ini file as a parameter and reads it line by line. It then parses the lines into sections, keys, and values and stores them in a hashtable.
-
-.PARAMETER Path
-The path to the ini file to be read.
-
-.EXAMPLE
-Get-IniContent -Path C:\Users\user\Documents\config.ini
-
-This example reads the config.ini file from the C:\Users\user\Documents directory and returns a hashtable of its contents.
-
-.NOTES
-This function assumes that the ini file has a valid format and does not contain any duplicate sections or keys.
-#>
-
 # Define the Get-IniContent function
 function Get-IniContent {
   # Define the parameter
   Param (
     [string]$Path
   )
-  Write-Host "*** Check config.ini for MongoDB URI, OpenAI API Key and BingAI Access Token... ***" -ForegroundColor Blue
+  Write-Host "*** Check config.ini for MongoDB URI and OpenAI API Key... ***" -ForegroundColor Blue
   Write-Host "`n"
   # Check if the path is valid
   if (-not (Test-Path -Path $Path)) {

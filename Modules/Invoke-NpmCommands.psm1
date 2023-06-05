@@ -1,25 +1,3 @@
-<#
-.SYNOPSIS
-Runs npm ci and npm run build in the api and client directories.
-
-.DESCRIPTION
-This function runs npm ci and npm run build in the api and client directories of a project. It assumes that the project has a package.json file in each directory and that the build script is defined in the client directory.
-
-.PARAMETER final_dir
-The path to the project root folder.
-
-.EXAMPLE
-Invoke-NpmCommands -final_dir "C:\Users\user\Documents\my-project"
-
-This example runs npm ci and npm run build in the api and client directories of the my-project folder.
-
-.NOTES
-This function requires Node.js and npm to be installed on the system.
-#>
-
-# Invoke-NpmCommands function
-# This function runs npm ci and npm run build in the api and client directories
-# It takes one parameter: $final_dir, which is the path to the project root folder
 function Invoke-NpmCommands {
   param (
     [string]$final_dir

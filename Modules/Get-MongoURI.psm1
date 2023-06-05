@@ -28,7 +28,7 @@ Write-Host "`n"
 Write-Host "- Sign In or Create an account at : " -NoNewline
 Write-Host "https://www.mongodb.com/"  -ForegroundColor Cyan
 Write-Host "- Create a new project"
-Write-Host "- Build a Database using the free plan and name the cluster (example: chatgpt-clone)"
+Write-Host "- Build a Database using the free plan and name the cluster (example: LibreChat)"
 Write-Host "- Use the 'Username and Password' method for authentication"
 Write-Host "- Add your current IP to the access list"
 Write-Host "- Then in the Database Deployment tab click on Connect"

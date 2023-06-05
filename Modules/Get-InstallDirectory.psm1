@@ -1,22 +1,14 @@
-<#
-.SYNOPSIS
-A function that gets the install directory from the user or uses the default one.
-
-.DESCRIPTION
-This function prompts the user to choose between using the default install directory or entering a custom one. It then validates the user input and returns the final install directory. It also enables debug output for this module if the $Debug variable is set to $true.
-#>
-
 function Get-InstallDirectory {
-    $default_dir = "C:\chatgpt-clone"
+    $default_dir = "C:\LibreChat"
     Clear-Host
 	Write-Host "*** Setup the Install Directory ***" -ForegroundColor Blue
     Write-Host "`n"
     Write-Host "The default install directory is $default_dir" -ForegroundColor Red
     Write-Host "`n"
-    $use_default = Read-Host "Do you want to use the default directory to install ChatGPT-Clone (Y/n)"
+    $use_default = Read-Host "Do you want to use the default directory to install LibreChat (Y/n)"
     while ($use_default -notin @("Y","y","N","n","")) {
         Write-Host "Invalid input. Please enter Y or n." -ForegroundColor Yellow
-        $use_default = Read-Host "Do you want to use the default directory to install ChatGPT-Clone (Y/n)"
+        $use_default = Read-Host "Do you want to use the default directory to install LibreChat (Y/n)"
     }
     if ($use_default -in @("Y","y","")) {
         if (Test-Path $default_dir) {
@@ -36,14 +28,14 @@ function Get-InstallDirectory {
         else {
             New-Item $default_dir -ItemType Directory -Force | Out-Null
             return $default_dir
-			Write-Host "ChatGPT-Clone installation folder is : $default_dir"
+			Write-Host "LibreChat installation folder is : $default_dir"
 
         }
     }
     else {
         $custom_path = Read-Host "Enter the path for the custom installation dir"
         while ($custom_path -ne "" -and !($custom_path -match "^[a-zA-Z]:\\(?:[^\\/:*?`"<>|]+\\)*[^\\/:*?`"<>|]+$")) {
-            Write-Host "Invalid path. Please enter a valid path name (example: C:\chatgpt-clone)" -ForegroundColor Yellow
+            Write-Host "Invalid path. Please enter a valid path name (example: C:\LibreChat)" -ForegroundColor Yellow
             $custom_path = Read-Host "Enter the path for the custom installation dir"
         }
         if ($custom_path -eq "") {
@@ -75,7 +67,7 @@ function Get-InstallDirectory {
             }
         }
         return $custom_path
-		Write-Host "ChatGPT-Clone installation folder is : $custom_path"
+		Write-Host "LibreChat installation folder is : $custom_path"
     }
 }
 

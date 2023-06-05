@@ -1,13 +1,6 @@
-<#
-.SYNOPSIS
-Displays a intro message and some instructions for using the installer.
-
-.DESCRIPTION
-This function displays a displays a Introduction message and some instructions for using the installer.
-#>
 function Show-InstallationIntroduction {
 
-# Display the message using a here-string
+# Display the Intro Message
 Clear-Host
 Write-Host "*** Introduction ***" -ForegroundColor Blue
 Write-Host "`n"
@@ -15,7 +8,6 @@ Write-Host "***WARNING***"-ForegroundColor Red
 Write-Host "If you already have either of those: " -ForegroundColor Red
 Write-Host "- OpenAI API Key (OPENAI_KEY)" -ForegroundColor Yellow 
 Write-Host "- MongoDB Connection string (MONGODB_URI)" -ForegroundColor Yellow 
-Write-Host "- Bing _U Cookie content (BINGAI_TOKEN)" -ForegroundColor Yellow 
 Write-Host "Stop the installer now!" -ForegroundColor Red
 Write-Host "And enter them in the `config.ini` file (located in the installer folder)." -ForegroundColor Yellow
 Write-Host "This will make the process way faster." -ForegroundColor Yellow
