@@ -51,16 +51,16 @@ if ($pressedKey.VirtualKeyCode -eq 13) {
 # Step 1: Ask user for MONGO_URI
 $mongoUri = Read-Host "Please enter your MongoDB connection string"
 
-# Step 2: Check for <password>
-if ($mongoUri.Contains("<password>")) {
-    Write-Host "Please replace <password> with your own password." -ForegroundColor Red
+# Step 2: Check for '<' and '>' characters around password
+if ($mongoUri.Contains("<") -or $mongoUri.Contains(">")) {
+    Write-Host "Please remove the '<' and '>' characters from your MongoDB connection string." -ForegroundColor Red
     
     # Prompt user to re-enter MONGO_URI
     $mongoUri = ""
-    while (-not ($mongoUri -notmatch "<password>")) {
+    while (($mongoUri -match "<") -or ($mongoUri -match ">")) {
         $mongoUri = Read-Host "Please enter your MongoDB connection string" -ForegroundColor Red
-        if ($mongoUri.Contains("<password>")) {
-            Write-Host "Please replace <password> with your own password." -ForegroundColor Red
+        if ($mongoUri.Contains("<") -or $mongoUri.Contains(">")) {
+            Write-Host "Please remove the '<' and '>' characters from your MongoDB connection string." -ForegroundColor Red
         }
     }
 }

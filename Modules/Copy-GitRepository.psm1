@@ -69,7 +69,7 @@ function Copy-GitRepository ($final_dir) {
 
   # Clone the repo using git clone
   try {
-    git clone $repo $final_dir
+    git clone -b langchain $repo $final_dir
     Write-Host "Cloned the repo successfully." -ForegroundColor Green
   }
   catch {

@@ -31,7 +31,7 @@ This function requires a valid template file with placeholders for the parameter
 #>
 
 
-# Define the function
+# Define the function# Define the function
 function New-EnvironmentFile ($template, $envfile, $OpenAIKey, $BingAIToken, $mongoUri) {
   # Create the .env file based on a template
 
@@ -48,13 +48,19 @@ function New-EnvironmentFile ($template, $envfile, $OpenAIKey, $BingAIToken, $mo
 
     # Replace the placeholders with the parameters
     $content = $content -replace 'OPENAI_KEY=.*', "OPENAI_KEY=$OpenAIKey"
-    $content = $content -replace 'BINGAI_TOKEN=.*', "BINGAI_TOKEN=$BingAIToken"
     $content = $content -replace 'MONGO_URI=.*', "MONGO_URI=$mongoUri"
+    $content = $content -replace 'BINGAI_TOKEN=.*', 'BINGAI_TOKEN="user_provided"'
+    $content = $content -replace '# PALM_KEY=.*', 'PALM_KEY="user_provided"'
 
     # Save the changes to the .env file
     Set-Content -Path $envfile -Value $content
 
-    Write-Host "Created the .env file successfully." -ForegroundColor Green
+    # Change the working directory and copy the .env.example file
+    $parentDir = Split-Path -Parent $envfile
+    Set-Location $parentDir\..
+    Copy-Item .\client\.env.example .\client\.env
+
+    Write-Host "Created the .env files successfully." -ForegroundColor Green
   }
 
   # Pause and clear the screen

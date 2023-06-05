@@ -64,7 +64,7 @@ Import-Module .\Modules\New-EnvironmentFile.psm1
 Import-Module .\Modules\Install-MeiliSearch.psm1
 Import-Module .\Modules\Get-MongoURI.psm1
 Import-Module .\Modules\Get-OpenAIAPIKey.psm1
-Import-Module .\Modules\Get-BingAccessToken.psm1
+Import-Module .\Modules\Get-Creds.psm1
 Import-Module .\Modules\Install-Ngrok.psm1
 Import-Module .\Modules\Invoke-NpmCommands.psm1
 Import-Module .\Modules\Copy-TemplateBatFile.psm1
@@ -119,10 +119,10 @@ Invoke-Command -ScriptBlock {New-EnvironmentFile $template $envfile $openai_key 
 
 # Soft Requirements (MeiliSearch and ngrok)
 # Downloading Meilisearch
-Install-MeiliSearch -final_dir $final_dir -envfile $envfile
+#Install-MeiliSearch -final_dir $final_dir -envfile $envfile
 
 # Run Install-Ngrok
-Install-Ngrok $final_dir 
+#Install-Ngrok $final_dir 
 
 # Instruction for MongoDB, OpenAI, Bing and ngrok
 # If the mongo_uri parameter is missing or invalid, run Get-MongoURI
@@ -130,15 +130,18 @@ if (-not $mongo_uri) {
   Get-MongoURI $envfile $final_dir
 }
 
-# If the openai_key parameter is missing or invalid, run Get-MongoURI
+# If the openai_key parameter is missing or invalid, run Get-OpenAIAPIKey
 if (-not $openai_key) {
   Get-OpenAIAPIKey $envfile $final_dir
 }
 
+# Set Cred and Cred IV in the env file
+Get-Creds $envfile $final_dir
+pause
 # If the bingai_token parameter is missing or invalid, run Get-MongoURI
-if (-not $bingai_token) {
-  Get-BingAccessToken $envfile $final_dir
-}
+# if (-not $bingai_token) {
+#   Get-BingAccessToken $envfile $final_dir
+# }
 
 # Run Get-IniContent
 Import-Module .\Modules\Get-IniContent.psm1
