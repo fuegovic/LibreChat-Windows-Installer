@@ -27,11 +27,12 @@ This script requires Windows 10 64 bits, version 21H1 or higher.
 
 **TL;DR**
 
-* Download the latest release ➡️ [v0.3](https://github.com/fuegovic/LibreChat-Windows-Installer/releases/tag/v0.3)
+* Download the [latest release](https://github.com/fuegovic/LibreChat-Windows-Installer/releases/)
   
   - or  download the zip file (click on code - select download zip) ⤴️
+  - or clone the repo with `git clone https://github.com/fuegovic/LibreChat-Windows-Installer.git`
 
-* Extract the zip file
+* Extract the files
 
 * Double click on install.bat and follow the on-screen instructions
 
