@@ -45,11 +45,11 @@ Microsoft Defender SmartScreen will prevent it to start
 
 First press on <u>More info</u>
 
-<img src="https://github.com/fuegovic/wip-inst-cgpt-c/blob/main/Images/WindowsDefender1.png" title="" alt="WindowsDefender1.png" width="128">  
+<img src="/Images/WindowsDefender1.png" title="" alt="WindowsDefender1.png" width="128">  
 
 Then select `Run anyway`
 
-<img src="https://github.com/fuegovic/wip-inst-cgpt-c/blob/main/Images/WindowsDefender2.png" title="" alt="WindowsDefender2.png" width="128">
+<img src="/Images/WindowsDefender2.png" title="" alt="WindowsDefender2.png" width="128">
 
 **Details**
 
@@ -105,7 +105,7 @@ Go to your desktop and use the shortcut `LibreChat` to start and/or update the p
 
 - **4** Close everything for you
 
-<img title="" src="https://github.com/fuegovic/wip-inst-cgpt-c/blob/main/Images/Menu1.jpg" alt="Menu1.jpg" width="680" data-align="inline">
+<img title="" src="/Images/Menu1.jpg" alt="Menu1.jpg" width="680" data-align="inline">
 
 **On the second screen**
 
@@ -115,7 +115,7 @@ Go to your desktop and use the shortcut `LibreChat` to start and/or update the p
 
 - **2** Close everything for you
 
-<img title="" src="https://github.com/fuegovic/wip-inst-cgpt-c/blob/main/Images/Menu2.jpg" alt="Menu2.jpg" width="635">
+<img title="" src="/Images/Menu2.jpg" alt="Menu2.jpg" width="635">
 
 **Warning :** The exit procedure is pretty aggressive and will close all instance of node.exe and kill cmd.exe. If you don't know what that means, it's probably ok. If you want to change that behavior, you can edit the LibreChat.bat in the installation folder.
 
