@@ -5,7 +5,7 @@ This script automates the local Windows 64 bits installation of :
 [GitHub - danny-avila/LibreChat](https://github.com/danny-avila/LibreChat)
 
 I you have an issue with the installer you can contact me here
-or ping me on [discord](https://discord.gg/mvaZ3f5b)
+or ping me on [discord](https://discord.gg/mvaZ3f5b) (@fuegovic)
 
 ## Table of Contents
 
