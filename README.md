@@ -43,13 +43,9 @@ This script requires Windows 10 64 bits, version 21H1 or higher.
 
 Microsoft Defender SmartScreen will prevent it to start
 
-First press on <u>More info</u>
+First press on `More info` , then select `Run anyway`
 
-<img src="/Images/WindowsDefender1.png" title="" alt="WindowsDefender1.png" width="128">  
-
-Then select `Run anyway`
-
-<img src="/Images/WindowsDefender2.png" title="" alt="WindowsDefender2.png" width="128">
+<img src="/Images/WindowsDefender.png" title="" alt="WindowsDefender.png" height="256" >  
 
 **Details**
 
