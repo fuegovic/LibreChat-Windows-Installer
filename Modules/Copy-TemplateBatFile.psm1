@@ -29,8 +29,7 @@ Copy-Item "$original_location\Dependencies\LibreChat.ico" "$final_dir\LibreChat.
 
 $OneDrive = "$env:USERPROFILE\OneDrive\Desktop"
 $UserDesktop = "$env:HOMEPATH\Desktop"
-WriteHost "$UserDesktop"
-pause
+
 if (Test-Path $OneDrive -PathType Container) {
     if (Test-Path $UserDesktop -PathType Container) {
         do {
@@ -58,7 +57,7 @@ if ($Location -eq "1") {
 elseif ($Location -eq "2") {
     $shortcutLocation = "$UserDesktop"
 }
-pause
+
 $WshShell = New-Object -comObject WScript.Shell
 $Shortcut = $WshShell.CreateShortcut("$shortcutLocation\LibreChat.lnk")
 $Shortcut.TargetPath = "$final_dir\LibreChat.bat"
