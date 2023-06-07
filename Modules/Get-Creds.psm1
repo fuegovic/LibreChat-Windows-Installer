@@ -4,18 +4,24 @@ function Get-Creds {
         $final_dir
     )
 
-    
-    Write-Host "*** Generating Secure Crypto Keys ***" -ForegroundColor Blue    # Generate the key and iv using the crypto module
+    # Generate the key and iv using the crypto module
+    Write-Host "*** Generating Secure Crypto Keys ***" -ForegroundColor Blue
     $key = node -e "'use strict';console.log(crypto.randomBytes(32).toString('hex'));"
     Write-Host "CREDS_KEY= $key"
     $iv = node -e "'use strict';console.log(crypto.randomBytes(16).toString('hex'));"
     Write-Host "CREDS_IV= $iv"
     
+    # Generate a new 32-byte random string for JWT_SECRET
+    $jwt_secret = node -e "'use strict';console.log(crypto.randomBytes(32).toString('hex'));"
+    Write-Host "JWT_SECRET= $jwt_secret"
+
     # Read the existing contents of the .env file
     $content = Get-Content -Path "$envfile"
-    # Replace the existing CREDS_KEY and CREDS_IV values with the new values
+
+    # Replace the existing CREDS_KEY, CREDS_IV, and JWT_SECRET values with the new values
     $content = $content -replace 'CREDS_KEY=.*', "CREDS_KEY=$key"
     $content = $content -replace 'CREDS_IV=.*', "CREDS_IV=$iv"
+    $content = $content -replace 'JWT_SECRET=.*', "JWT_SECRET=$jwt_secret"
 
     # Write the modified contents to the .env file
     Set-Content -Path "$envfile" -Value $content -Force
