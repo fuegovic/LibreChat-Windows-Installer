@@ -18,7 +18,7 @@ function New-EnvironmentFile ($template, $envfile, $OpenAIKey, $BingAIToken, $mo
     $content = $content -replace 'MONGO_URI=.*', "MONGO_URI=$mongoUri"
     $content = $content -replace 'BINGAI_TOKEN=.*', 'BINGAI_TOKEN="user_provided"'
     $content = $content -replace '# PALM_KEY=.*', 'PALM_KEY="user_provided"'
-   	$content = $content -replace 'DOMAIN_CLIENT=.*', 'DOMAIN_CLIENT=http://localhost:3080'
+    $content = $content -replace 'DOMAIN_CLIENT=.*', 'DOMAIN_CLIENT=http://localhost:3080'
 
     # Save the changes to the .env file
     Set-Content -Path $envfile -Value $content
