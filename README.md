@@ -7,6 +7,17 @@ This script automates the local Windows 64 bits installation of :
 I you have an issue with the installer you can contact me here
 or ping me on [discord](https://discord.gg/mvaZ3f5b) (@fuegovic)
 
+---
+
+## ⚠️ Warning ⚠️
+Don't worry about the error that may occur when installing ngrok. It's due to Windows Defender flagging ngrok as "potentially harmful" lately. You can still install LibreChat successfully. The only drawback is that you won't be able to enable public access (opt2 in the menu) unless you set up ngrok manually and copy the executable to the install directory. You can visit ngrok's website from [here](https://ngrok.com/download) if you wish to enable the feature.
+
+<img src="/Images/ngrok-error.jpg" title="" alt="ngrok-error.jpg" height="128" >
+
+We apologize for any inconvenience. 🌻
+
+---
+
 ## Table of Contents
 
 - [LibreChat Install Script](#librechat-install-script)
