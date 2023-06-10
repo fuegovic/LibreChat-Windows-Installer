@@ -8,7 +8,7 @@ REM _finaldir=<put your install directory here>
 REM _MEILIMASTERKEY=<put your MeiliSearch master key here>
 
 echo off
-title ChatGPT-Clone
+title LibreChat
 setlocal enabledelayedexpansion
 
 set _finaldir=$final_dir
@@ -25,9 +25,9 @@ for /f %%a in ('echo prompt $E ^| cmd') do set "ESC=%%a
 cls
 echo. %ESC%[38;2;255;128;0m
 echo ===========================================================
-echo +=+=+=+=+=+=+=+=+=+=+={CHATGPT-CLONE}=+=+=+=+=+=+=+=+=+=+=+
+echo +=+=+=+=+=+=+=+=+=+=+=+={LibreChat}=+=+=+=+=+=+=+=+=+=+=+=+
 echo -----------------------------------------------------------
-echo  {Press Ctrl+Shift+R or Ctrl+F5 on the ChatGPT-Clone page}
+echo  {Press Ctrl+Shift+R or Ctrl+F5 on the LibreChat page}
 echo           {to clear cache files after an update!}
 echo ===========================================================
 echo.
@@ -51,7 +51,7 @@ goto menu
 cls
 echo. %ESC%[38;2;255;128;0m
 echo ===========================================================
-echo +=+=+=+=+=+=+=+=+=+=+={CHATGPT-CLONE}=+=+=+=+=+=+=+=+=+=+=+
+echo +=+=+=+=+=+=+=+=+=+=+=+={LibreChat}=+=+=+=+=+=+=+=+=+=+=+=+
 echo -----------------------------------------------------------
 echo {note: if the page is not available wait a bit and refresh}
 echo            {it might take a minute if indexing}  
@@ -87,9 +87,9 @@ if "%ERRORLEVEL%"=="0" (
 if "%running%" NEQ "0" (
     echo One or more services are already running, they will be terminated before we continue.
     pause
-	taskkill /F /IM node.exe
-	taskkill /F /IM meilisearch.exe
-	taskkill /F /IM ngrok.exe
+	taskkill /F /IM node.exe > nul 2>&1
+	taskkill /F /IM meilisearch.exe > nul 2>&1
+	taskkill /F /IM ngrok.exe > nul 2>&1
 	goto start_local
 	
 ) else (
@@ -118,14 +118,14 @@ if "%ERRORLEVEL%"=="0" (
 if "%running%" NEQ "0" (
     echo One or more services are already running, they will be terminated before we continue.
     pause
-	taskkill /F /IM node.exe
-	taskkill /F /IM meilisearch.exe
-	taskkill /F /IM ngrok.exe
+	taskkill /F /IM node.exe > nul 2>&1
+	taskkill /F /IM meilisearch.exe > nul 2>&1
+	taskkill /F /IM ngrok.exe > nul 2>&1
 	goto start_public
 	
 ) else (
     start "MeiliSearch" /MIN cmd /k "meilisearch --master-key %_MEILIMASTERKEY% --max-indexing-memory 8192"
-    start "ChatGPT-Clone" /MIN cmd /k "npm run backend"
+    start "LibreChat" /MIN cmd /k "npm run backend"
 
 	REM Start ngrok and redirect the output to a file
 	start "Public URL" /MIN cmd /k "ngrok http 3080 --log=stdout > ngrok.log &"
@@ -143,35 +143,15 @@ if "%running%" NEQ "0" (
 
 :update
 set running=0
-tasklist /FI "WINDOWTITLE eq npm start" | find /i "node.exe" > nul
-if "%ERRORLEVEL%"=="0" (
-    echo 'ChatGPT-Clone' is already running.
-    set /a running+=1
-)
-
-tasklist /FI "IMAGENAME eq meilisearch.exe" | find /i "meilisearch.exe" > nul
-if "%ERRORLEVEL%"=="0" (
-    echo 'meilisearch.exe' is already running.
-    set /a running+=1
-)
-
-if "%running%" NEQ "0" (
-    echo One or more services are already running, they will be terminated before we continue.
-    pause
-rem	wmic process where 'commandline like "%%node server/index.js%%"' call terminate
-	taskkill /F /IM node.exe
-	taskkill /F /IM meilisearch.exe
-	goto update
-	
-) else (
-	cls
-	call git pull origin main
-	call npm ci
-	call npm run frontend
-	echo update complete 
-	pause
-	goto menu
-)
+taskkill /F /IM node.exe > nul 2>&1
+taskkill /F /IM meilisearch.exe > nul 2>&1
+cls
+call git pull origin main
+call npm ci
+call npm run frontend
+echo update complete 
+pause
+goto menu
 
 :web-app
 start msedge --app=http://localhost:3080
@@ -179,10 +159,10 @@ goto menu2
 
 :exit
 rem wmic process where 'commandline like "%%node server/index.js%%"' call terminate
-taskkill /F /IM node.exe
-taskkill /F /IM meilisearch.exe
-taskkill /F /IM ngrok.exe
+taskkill /F /IM node.exe > nul 2>&1
+taskkill /F /IM meilisearch.exe > nul 2>&1
+taskkill /F /IM ngrok.exe > nul 2>&1
 echo bye
 pause
-taskkill /F /IM cmd.exe
+taskkill /F /IM cmd.exe > nul 2>&1
 exit /b 0

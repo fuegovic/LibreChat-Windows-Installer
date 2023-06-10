@@ -1,22 +1,3 @@
-<#
-.SYNOPSIS
-Installs or upgrades Node.js using winget.
-
-.DESCRIPTION
-This function checks if Node.js is already installed on the system. If it is, it upgrades it to the latest version available in the winget repository. If it is not, it downloads and installs it using winget.
-
-.EXAMPLE
-Install-NodeJS
-
-This example installs or upgrades Node.js using winget.
-
-.NOTES
-This function requires winget to be installed on the system.
-
-
-#>
-
-
 # Define the function
 function Install-NodeJS {
   Write-Host "*** Install and/or Update Node.js to the Latest Version ***" -ForegroundColor Blue

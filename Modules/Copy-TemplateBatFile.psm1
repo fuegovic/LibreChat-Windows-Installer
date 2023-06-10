@@ -1,30 +1,15 @@
-<#
-.SYNOPSIS
-This PowerShell module contains a function called "Copy-TemplateBatFile" that copies a template batch file from one location to another, replaces certain variables within the batch file with the correct values, and saves the updated batch file.
-
-.DESCRIPTION
-This PowerShell module is used for creating a batch file based on a template. It includes a function called "Copy-TemplateBatFile" that copies a batch file template from one location to another location and customizes certain variables within the batch file.
-
-.PARAMETER
-original_location: The path of the directory containing the template batch file to be copied.
-
-final_dir: The path of the directory where the copied batch file will be saved.
-
-envfile: The path of the file that contains variables that should be replaced in the final batch file. Specifically, this file contains the value for the MEILI_MASTER_KEY variable.
-#>
-
 function Copy-TemplateBatFile {
 param (
     [string]$original_location,
     [string]$final_dir, 
     [string]$envfile
 )
-Write-Host "***  Create ChatGPT-Clone.bat, used to Start and Update the project ***" -ForegroundColor Blue
+Write-Host "***  Create LibreChat.bat, used to Start and Update the project ***" -ForegroundColor Blue
 Write-Host "`n"
 
 # Set the paths to the template batch file and the destination for the copied batch file
-$template_file = "$original_location/Dependencies/template.bat"
-$copied_file = "$final_dir\ChatGPT-Clone.bat"
+$template_file = "$original_location\Dependencies\template.bat"
+$copied_file = "$final_dir\LibreChat.bat"
 
 # Copy the template batch file to the destination directory
 Copy-Item $template_file $copied_file
@@ -40,7 +25,7 @@ $batch_contents = $batch_contents -replace '\$MEILI_MASTER_KEY', $MEILI_MASTER_K
 # Save the updated contents to the copied batch file
 Set-Content $copied_file $batch_contents
 
-Copy-Item "$original_location\Dependencies\ChatGPT-Clone.ico" "$final_dir\ChatGPT-Clone.ico"
+Copy-Item "$original_location\Dependencies\LibreChat.ico" "$final_dir\LibreChat.ico"
 
 $OneDrive = "$env:USERPROFILE\OneDrive\Desktop"
 $UserDesktop = "$env:HOMEPATH\Desktop"
@@ -74,13 +59,13 @@ elseif ($Location -eq "2") {
 }
 
 $WshShell = New-Object -comObject WScript.Shell
-$Shortcut = $WshShell.CreateShortcut("$shortcutLocation\ChatGPT-Clone.lnk")
-$Shortcut.TargetPath = "$final_dir\ChatGPT-Clone.bat"
-$Shortcut.IconLocation = "$final_dir\ChatGPT-Clone.ico"
+$Shortcut = $WshShell.CreateShortcut("$shortcutLocation\LibreChat.lnk")
+$Shortcut.TargetPath = "$final_dir\LibreChat.bat"
+$Shortcut.IconLocation = "$final_dir\LibreChat.ico"
 $Shortcut.WorkingDirectory = "$final_dir"
 
 $Shortcut.Save()
-Write-Host "The shortcut to ChatGPT-Clone is : $shortcutLocation\ChatGPT-Clone.lnk" -ForegroundColor Cyan
+Write-Host "The shortcut to LibreChat is : $shortcutLocation\LibreChat.lnk" -ForegroundColor Cyan
 
 # Pause and clear the screen
 Start-Sleep -Seconds 4

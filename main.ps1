@@ -1,8 +1,8 @@
 <# 
-This script automates the local installation of ChatGPT-Clone for Windows. 
+This script automates the local installation of LibreChat for Windows. 
 
-ChatGPT-Clone is a web app that lets you use ChatGPT and Bing with custom parameters.
-The Github link is https://github.com/danny-avila/chatgpt-clone
+LibreChat is a web app that lets you use ChatGPT and Bing with custom parameters.
+The Github link is https://github.com/danny-avila/LibreChat
 
 You can provide a config.json file with the following keys:
 MONGO_URI: The connection string for MongoDB
@@ -21,8 +21,7 @@ This script was made by Fuegovic (https://github.com/fuegovic), a amateur develo
 Param (
   [switch]$Debug,
   [string]$mongo_uri,
-  [string]$openai_key,
-  [string]$bingai_token
+  [string]$openai_key
 )
 
 # Clear all Variables, Modules, and the console window
@@ -64,7 +63,7 @@ Import-Module .\Modules\New-EnvironmentFile.psm1
 Import-Module .\Modules\Install-MeiliSearch.psm1
 Import-Module .\Modules\Get-MongoURI.psm1
 Import-Module .\Modules\Get-OpenAIAPIKey.psm1
-Import-Module .\Modules\Get-BingAccessToken.psm1
+Import-Module .\Modules\Get-Creds.psm1
 Import-Module .\Modules\Install-Ngrok.psm1
 Import-Module .\Modules\Invoke-NpmCommands.psm1
 Import-Module .\Modules\Copy-TemplateBatFile.psm1
@@ -113,8 +112,8 @@ $final_dir = Get-InstallDirectory
 Copy-GitRepository $final_dir
 
 # Create a New .env File
-$template = "$final_dir\api\.env.example"
-$envfile = "$final_dir\api\.env"
+$template = "$final_dir\.env.example"
+$envfile = "$final_dir\.env"
 Invoke-Command -ScriptBlock {New-EnvironmentFile $template $envfile $openai_key $bingai_token $mongo_uri}
 
 # Soft Requirements (MeiliSearch and ngrok)
@@ -130,15 +129,13 @@ if (-not $mongo_uri) {
   Get-MongoURI $envfile $final_dir
 }
 
-# If the openai_key parameter is missing or invalid, run Get-MongoURI
+# If the openai_key parameter is missing or invalid, run Get-OpenAIAPIKey
 if (-not $openai_key) {
   Get-OpenAIAPIKey $envfile $final_dir
 }
 
-# If the bingai_token parameter is missing or invalid, run Get-MongoURI
-if (-not $bingai_token) {
-  Get-BingAccessToken $envfile $final_dir
-}
+# Set Cred and Cred IV in the env file
+Get-Creds $envfile $final_dir
 
 # Run Get-IniContent
 Import-Module .\Modules\Get-IniContent.psm1

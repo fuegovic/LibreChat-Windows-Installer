@@ -1,23 +1,34 @@
-# ChatGPT-Clone Install Script
+# LibreChat Install Script
 
 This script automates the local Windows 64 bits installation of :
 
-[GitHub - danny-avila/chatgpt-clone](https://github.com/danny-avila/chatgpt-clone)
+[GitHub - danny-avila/LibreChat](https://github.com/danny-avila/LibreChat)
 
-⚠️ Due to some new features, this script no longer updates automatically. If you have used my installer before, please backup your .env keys (MONGO_URI and OPENAI_KEY) and reinstall from scratch.
+I you have an issue with the installer you can contact me here
+or ping me on [discord](https://discord.gg/mvaZ3f5b) (@fuegovic)
 
-⚠️ Also, if you need to update please follow this procedure, open with the shortcut, and select exit. Then open again with the shortcut and select update. (this is the safest way for now), it will be fixed in a future update.
+---
 
-I apologize for the inconvenience.🌻
+## ⚠️ Warning ⚠️
+Don't worry about the error that may occur when installing ngrok. It's due to Windows Defender flagging ngrok as "potentially harmful" lately. You can still install LibreChat successfully. The only drawback is that you won't be able to enable public access (opt2 in the menu) unless you set up ngrok manually and copy the executable to the install directory. You can visit ngrok's website from [here](https://ngrok.com/download) if you wish to enable the feature.
+
+<img src="/Images/ngrok-error.jpg" title="" alt="ngrok-error.jpg" height="128" >
+
+We apologize for any inconvenience. 🌻
+
+---
 
 ## Table of Contents
 
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Disclaimers](#disclaimers)
-- [License](#license)
-- [Credits](#credits)
+- [LibreChat Install Script](#librechat-install-script)
+  - [Table of Contents](#table-of-contents)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+  - [Note](#note)
+  - [Usage](#usage)
+  - [Disclaimers](#disclaimers)
+  - [Credits](#credits)
+  - [License](#license)
 
 ## Requirements
 
@@ -27,15 +38,16 @@ This script requires Windows 10 64 bits, version 21H1 or higher.
 
 **TL;DR**
 
-* Download the latest release ➡️ [v0.2](https://github.com/fuegovic/chatgpt-clone-local-installer/archive/refs/tags/v0.2.zip)
+* Download the [latest release](https://github.com/fuegovic/LibreChat-Windows-Installer/releases/)
   
   - or  download the zip file (click on code - select download zip) ⤴️
+  - or clone the repo with `git clone https://github.com/fuegovic/LibreChat-Windows-Installer.git`
 
-* Extract the zip file
+* Extract the files
 
 * Double click on install.bat and follow the on-screen instructions
 
-* Use the `ChatGPT-Clone` shortcut on your desktop to start or update the project
+* Use the `LibreChat` shortcut on your desktop to start or update the project
 
 * Profit!
 
@@ -43,13 +55,9 @@ This script requires Windows 10 64 bits, version 21H1 or higher.
 
 Microsoft Defender SmartScreen will prevent it to start
 
-First press on <u>More info</u>
+First press on `More info` , then select `Run anyway`
 
-<img src="https://github.com/fuegovic/wip-inst-cgpt-c/blob/main/Images/WindowsDefender1.png" title="" alt="WindowsDefender1.png" width="128">  
-
-Then select `Run anyway`
-
-<img src="https://github.com/fuegovic/wip-inst-cgpt-c/blob/main/Images/WindowsDefender2.png" title="" alt="WindowsDefender2.png" width="128">
+<img src="/Images/WindowsDefender.png" title="" alt="WindowsDefender.png" height="256" >  
 
 **Details**
 
@@ -59,11 +67,11 @@ Run the install.bat file and follow the on-screen prompts. This script will:
 
 * Install [Git](https://git-scm.com/download/win) (if needed)
 * Update [Node.js](https://nodejs.org/en) (if needed)
-* Clone the [ChatGPT-Clone](https://github.com/danny-avila/chatgpt-clone) repository from GitHub
+* Clone the [LibreChat](https://github.com/danny-avila/LibreChat) repository from GitHub
 * Install [MeiliSearch](https://www.meilisearch.com)
 * Install [Ngrok](https://ngrok.com)
-* Guide you through the process of acquiring the required [MongoDB URI](https://www.mongodb.com), [OpenAI API key](https://platform.openai.com/account/api-keys), and [BingAI Access Token](https://www.bing.com/)
-* Provide a bat file to run and update ChatGPT-Clone
+* Guide you through the process of acquiring the required [MongoDB URI](https://www.mongodb.com) and [OpenAI API key](https://platform.openai.com/account/api-keys)
+* Provide a bat file to run and update LibreChat
 
 **If you already have your MongoDB URI, OpenAI API key, or BingAI Access Token you can fill the `config.ini` file to skip these steps during the installation**
 
@@ -73,28 +81,27 @@ Run the install.bat file and follow the on-screen prompts. This script will:
 
 [API]
 ;openai_key = <your OpenAI key>
-;bingai_token = <your Bing token>
 ```
 
 Alternatively, you can pass the same values as named parameters when running the script from a powershell terminal. For example:
 
 ```powershell
-.\main.ps1 -mongo_uri "mongodb://127.0.0.1:27017/chatgpt-clone" -openai_key "sk-123456789...321" -bingai_token "a1b2c3d4e5...f6g7"
+.\main.ps1 -mongo_uri "mongodb://127.0.0.1:27017/LibreChat" -openai_key "sk-123456789...321" -bingai_token "a1b2c3d4e5...f6g7"
 ```
 
 The use of either the config file or the parameters is optional. If you don't provide them, the script will ask you to enter them manually.
 
 ## Note
 
-If you just want an easy way to start and update [ChatGPT-Clone](https://github.com/danny-avila/chatgpt-clone) you can use `template.bat` in the dependencies directory and modify it to fit your needs.
+If you just want an easy way to start and update [LibreChat](https://github.com/danny-avila/LibreChat) you can use `template.bat` in the dependencies directory and modify it to fit your needs.
 
-By default the max indexing memory is set to 8Gb, you can set it to any value you want or removing altogether by editing the bat file. (template.bat before install or ChatGPT-Clone.bat in the install directory. search for the 2 lines with `--max-indexing-memory 8192` )
+By default the max indexing memory is set to 8Gb, you can set it to any value you want or removing altogether by editing the bat file. (template.bat before install or LibreChat.bat in the install directory. search for the 2 lines with `--max-indexing-memory 8192` )
 
 ## Usage
 
-When you are done you should have a working installation of [ChatGPT-Clone](https://github.com/danny-avila/chatgpt-clone).
+When you are done you should have a working installation of [LibreChat](https://github.com/danny-avila/LibreChat).
 
-Go to your desktop and use the shortcut `ChatGPT-Clone` to start and/or update the project
+Go to your desktop and use the shortcut `LibreChat` to start and/or update the project
 
 **On the first screen**
 
@@ -102,33 +109,33 @@ Go to your desktop and use the shortcut `ChatGPT-Clone` to start and/or update t
 
 - **2** Start the local server and the ngrok tunnel giving you a public url that you can share or use to connect from another device
 
-- **3** Update the chatgpt-clone project to the latest version
+- **3** Update the LibreChat project to the latest version
 
 - **4** Close everything for you
 
-<img title="" src="https://github.com/fuegovic/wip-inst-cgpt-c/blob/main/Images/Menu1.jpg" alt="Menu1.jpg" width="680" data-align="inline">
+<img title="" src="/Images/Menu1.jpg" alt="Menu1.jpg" width="680" data-align="inline">
 
 **On the second screen**
 
-- In blue you have the URL(s) where you can access ChatGPT-Clone
+- In blue you have the URL(s) where you can access LibreChat
 
-- **1** Open a local web-app version of ChatGPT-Clone
+- **1** Open a local web-app version of LibreChat
 
 - **2** Close everything for you
 
-<img title="" src="https://github.com/fuegovic/wip-inst-cgpt-c/blob/main/Images/Menu2.jpg" alt="Menu2.jpg" width="635">
+<img title="" src="/Images/Menu2.jpg" alt="Menu2.jpg" width="635">
 
-**Warning :** The exit procedure is pretty aggressive and will close all instance of node.exe and kill cmd.exe. If you don't know what that means, it's probably ok. If you want to change that behavior, you can edit the ChatGPT-Clone.bat in the installation folder.
+**Warning :** The exit procedure is pretty aggressive and will close all instance of node.exe and kill cmd.exe. If you don't know what that means, it's probably ok. If you want to change that behavior, you can edit the LibreChat.bat in the installation folder.
 
 ## Disclaimers
 
 *This script installs third-party software. By using this script you certify that you have read and agree with the license agreements and restrictions of any software installed by this script.*
 
-This is only an installation script for ChatGPT-Clone. A project created by @danny-avila. A huge thanks to him and the other contributors for their constant updates on the project!
+This is only an installation script for LibreChat. A project created by @danny-avila. A huge thanks to him and the other contributors for their constant updates on the project!
 
-If you want to contribute to ChatGPT-Clone or report any issues about the main project, you can visit the GitHub repository at [danny-avila/chatgpt-clone](https://github.com/danny-avila/chatgpt-clone) or join the community on [discord](https://discord.gg/NGaa9RPCft).
+If you want to contribute to LibreChat or report any issues about the main project, you can visit the GitHub repository at [danny-avila/LibreChat](https://github.com/danny-avila/LibreChat) or join the community on [discord](https://discord.gg/NGaa9RPCft).
 
-For manual installation instructions or to use another method of installation visit the [main project page](https://github.com/danny-avila/chatgpt-clone).
+For manual installation instructions or to use another method of installation visit the [main project page](https://github.com/danny-avila/LibreChat).
 
 If you have issues with this specific installation script you contact me directly on the main project's [discord server](https://discord.gg/NGaa9RPCft).
 
@@ -136,7 +143,7 @@ If you have issues with this specific installation script you contact me directl
 
 This script was created by [Fuegovic](https://github.com/fuegovic), an amateur developer and a musician/producer. You can check out his music on [Bandcamp](https://fuegovic.bandcamp.com/) or [Spotify](https://open.spotify.com/artist/3ZfaxdODbE1NrfQYsGO92R).
 
-This install script and the resulting install of [ChatGPT-Clone](https://github.com/danny-avila/chatgpt-clone) uses [ChatGPT](https://chat.openai.com/) and [Bing](https://www.bing.com/) APIs, as well as [MeiliSearch](https://www.meilisearch.com), [MongoDB](https://www.mongodb.com), [Ngrok](https://ngrok.com/), and other open source libraries. All rights reserved to their respective owners.
+This install script and the resulting install of [LibreChat](https://github.com/danny-avila/LibreChat) uses [ChatGPT](https://chat.openai.com/) APIs, as well as [MeiliSearch](https://www.meilisearch.com), [MongoDB](https://www.mongodb.com), [Ngrok](https://ngrok.com/), and other open source libraries. All rights reserved to their respective owners.
 
 ## License
 

@@ -1,19 +1,3 @@
-<#
-.SYNOPSIS
-A function that installs git software if it is not already installed.
-
-.DESCRIPTION
-This function checks if Git is already installed on the system. If it is, it upgrades it to the latest version available in the winget repository. If it is not, it downloads and installs it using winget.
-
-.EXAMPLE
-Install-GitSoftware
-
-This example installs git software if it is not already installed.
-
-.NOTES
-This function requires winget to be installed on the system.
-#>
-
 function Install-GitSoftware {
   Clear-Host
   Write-Host "*** Install and/or Update Git to the Latest Version ***" -ForegroundColor Blue

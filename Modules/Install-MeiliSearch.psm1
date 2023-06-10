@@ -1,34 +1,12 @@
-<#
-.SYNOPSIS
-This PowerShell module contains a function called "Install-MeiliSearch" that installs the MeiliSearch software on a Windows machine, generates a random 44-bit master key, and updates the .env file with the MeiliSearch master key and search variable set to true.
-
-.DESCRIPTION
-This PowerShell module is used to install the MeiliSearch software on a Windows machine and customize the .env file with a random MeiliSearch master key and setting the search variable to true. MeiliSearch is an open-source search engine that provides fast and relevant search results.
-
-.PARAMETER
-final_dir: The path of the directory where the MeiliSearch .exe file will be download and installed.
-
-envfile: The path to the file to update with the MeiliSearch master key and search variable set to true. The file is assumed to be in the following format:
-"MEILI_MASTER_KEY=<master_key_string>"
-"SEARCH=<search_boolean>"
-
-.EXAMPLE
-Install-MeiliSearch -final_dir "C:\location" -envfile "D:\configuration\.env"
-
-This command installs the latest version of MeiliSearch software from GitHub to the directory located at "C:\location", generates a random 44-bit master key, sets the .env file present in "D:\configuration" with the MeiliSearch master key and setting the search variable to true.
-
-.NOTES
-This PowerShell module does not require administrative permissions to be executed.
-#>
 function Install-MeiliSearch ($final_dir, $envfile) {
 	Write-Host "*** Download the latest version of MeiliSearch ***" -ForegroundColor Blue
 	Write-Host "`n"
     # Ask the user if they want to use the search feature
-    $SEARCH = Read-Host "Do you want to enable the search feature? (Y/n)"
+    $SEARCH = Read-Host "Do you want to enable the search feature? (y/N)"
 
-    if ($SEARCH -eq "" -or $SEARCH -eq "Y") {
+    if ($SEARCH -eq "Y") {
         # If the user presses 'Enter' key without any input or inputs "Y", set $SEARCH = TRUE and continue with the script.
-        $SEARCH = "TRUE"
+        $SEARCH = "true"
         # Download the latest MeiliSearch release from Github.
         $meilisearchReleases = Invoke-WebRequest https://api.github.com/repos/meilisearch/meilisearch/releases -UseBasicParsing
         $amd64Asset = ($meilisearchReleases | ConvertFrom-Json)[0].assets | Where-Object { $_.name -eq "meilisearch-windows-amd64.exe" }
@@ -57,9 +35,9 @@ function Install-MeiliSearch ($final_dir, $envfile) {
         # Pause and clear the screen
         Start-Sleep -Seconds 2
         Clear-Host
-    } elseif ($SEARCH -eq "N") {
+    } elseif ($SEARCH -eq "" -or $SEARCH -eq "N") {
         # If the user inputs "N", set $SEARCH = FALSE, skip downloading, and skip key creation.
-        $SEARCH = "FALSE"
+        $SEARCH = "false"
     
         # Update the contents of the .env file for the application.
         $newSEARCH = "SEARCH=$SEARCH"
