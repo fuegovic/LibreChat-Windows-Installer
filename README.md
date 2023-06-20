@@ -1,3 +1,21 @@
+<p align="center">
+  <a href="https://discord.gg/NGaa9RPCft">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/fuegovic/LibreChat-Windows-Installer/assets/32828263/4b5401b6-b21c-4fd1-9782-ca4046c16a60">
+      <img src="https://github.com/fuegovic/LibreChat-Windows-Installer/assets/32828263/4b5401b6-b21c-4fd1-9782-ca4046c16a60" height="172">
+    </picture>
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://discord.gg/NGaa9RPCft"> 
+    <img src="https://img.shields.io/discord/1086345563026489514?label=&logo=discord&style=for-the-badge&logoWidth=20&labelColor=000000&color=blueviolet">
+  </a>
+  <a aria-label="LibreChat" href="https://librechat.ai">
+    <img alt="" src="https://img.shields.io/badge/LIBRECHAT-0366d6.svg?style=for-the-badge&labelColor=000000&logoWidth=20&logo=github">
+  </a>
+</p>
+
 # LibreChat Install Script
 
 This script automates the local Windows 64 bits installation of :
