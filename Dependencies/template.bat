@@ -131,12 +131,12 @@ if "%running%" NEQ "0" (
 	start "Public URL" /MIN cmd /k "ngrok http 3080 --log=stdout > ngrok.log &"
 	ping 127.0.0.1 -n 4 > nul
 	for /f "delims=" %%a in ('findstr /c:"%search%" "%logfile%"') do (
-	  set "line=%%a"
+    set "line=%%a"
 
-	  rem extract the URL string
-	  set "start_pos=!line:*url=!"
-	  set "url=!start_pos:*http=http!"
-	  echo !url!
+    rem extract the URL string
+    set "start_pos=!line:*url=!"
+    set "url=!start_pos:*http=http!"
+    echo !url!
 	)
     goto menu2
 )
@@ -146,9 +146,7 @@ set running=0
 taskkill /F /IM node.exe > nul 2>&1
 taskkill /F /IM meilisearch.exe > nul 2>&1
 cls
-call git pull origin main
-call npm ci
-call npm run frontend
+call npm run update:local
 echo update complete 
 pause
 goto menu
