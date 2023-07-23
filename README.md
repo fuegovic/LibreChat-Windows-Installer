@@ -106,6 +106,22 @@ If you just want an easy way to start and update [LibreChat](https://github.com/
 
 By default the max indexing memory is set to 8Gb, you can set it to any value you want or removing altogether by editing the bat file. (template.bat before install or LibreChat.bat in the install directory. search for the 2 lines with `--max-indexing-memory 8192` )
 
+### How to Update the launch script
+If you already have LibreChat installed and you want to get the latest version of the launch script, just follow these easy steps:
+- Open your current LibreChat.bat file in a text editor like Notepad
+- Copy the values of `_finaldir` and `_MEILIMASTERKEY` somewhere safe:
+  
+  ![image](https://github.com/fuegovic/LibreChat-Windows-Installer/assets/32828263/128ba8c8-50b5-4ae6-8f11-8fad33ec188b)
+
+- Download the new [template.bat](https://github.com/fuegovic/LibreChat-Windows-Installer/blob/main/Dependencies/template.bat) file from GitHub
+
+  ![image](https://github.com/fuegovic/LibreChat-Windows-Installer/assets/32828263/11e6e2d3-c7e1-4c82-8bd1-da50540653c4)
+
+- Open the new file in a text editor and paste the values of `_finaldir` and `_MEILIMASTERKEY` that you copied earlier
+- Save the new file as `LibreChat.bat` in the same folder where you installed LibreChat (usually `C:\LibreChat`)
+  - You can also rename the old `LibreChat.bat` instead of overwriting it if you want to backup it 
+- Voila! You're done!
+
 ## Usage
 
 When you are done you should have a working installation of [LibreChat](https://github.com/danny-avila/LibreChat).
