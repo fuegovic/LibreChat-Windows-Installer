@@ -18,12 +18,22 @@
 
 # LibreChat Install Script
 
+**Using docker is the recommended method to install LibreChat:**
+[https://docs.librechat.ai/install/windows_install.html](https://docs.librechat.ai/install/windows_install.html)
+
+If for one reason or another you don't want to use docker, you can continue with this method.
+
 This script automates the local Windows 64 bits installation of :
 
 [GitHub - danny-avila/LibreChat](https://github.com/danny-avila/LibreChat)
 
 I you have an issue with the installer you can contact me here
 or ping me on [discord](https://discord.gg/mvaZ3f5b) (@fuegovic)
+
+---
+
+## ⚠️Creating a MongoDB database is not easy, so please follow these instructions carefully⚠️
+### [https://docs.librechat.ai/install/mongodb.html](https://docs.librechat.ai/install/mongodb.html)
 
 ---
 
@@ -53,7 +63,7 @@ This script requires Windows 10 64 bits, version 21H1 or higher.
   - or  download the zip file (click on code - select download zip) ⤴️
   - or clone the repo with `git clone https://github.com/fuegovic/LibreChat-Windows-Installer.git`
 
-* Extract the files
+* Extract the files (if you downloaded the zip file)
 
 * Double click on install.bat and follow the on-screen instructions
 
