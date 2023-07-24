@@ -62,13 +62,15 @@ echo %ESC%[38;2;255;128;0m======================================================
 echo. 
 echo Select an option:
 echo.
-echo 1) Open the web-app
-echo 2) Exit
+echo 1) Open in default browser 
+echo 2) Open the web-app
+echo 3) Exit
 echo.
 set /p choice2=Type your choice and hit ENTER:
 echo.
-if "%choice2%"=="1" goto web-app
-if "%choice2%"=="2" goto exit
+if "%choice2%"=="1" goto default-browser
+if "%choice2%"=="2" goto web-app
+if "%choice2%"=="3" goto exit
 if "%choice2%"=="x" goto menu
 goto menu2
 
@@ -153,6 +155,12 @@ goto menu
 
 :web-app
 start msedge --app=http://localhost:3080
+goto menu2
+
+:default-browser
+@echo off
+set url=http://localhost:3080
+cmd /c start "" %url%
 goto menu2
 
 :exit
