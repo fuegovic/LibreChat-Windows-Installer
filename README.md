@@ -1,3 +1,7 @@
+# USE THE RECOMMENDED DOCKER INSTALL METHOD INSTEAD, THIS IS NOT MAINTAINED ANYMORE
+https://docs.librechat.ai/install/installation/windows_install.html
+
+
 <p align="center">
   <a href="https://discord.gg/NGaa9RPCft">
     <picture>
